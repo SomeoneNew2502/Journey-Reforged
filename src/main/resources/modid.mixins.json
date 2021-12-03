@@ -1,0 +1,27 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.journeyreforged.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "GhastExpMixin",
+    "EndermanExpMixin",
+    "HoglinExpMixin",
+    "PiglinExpMixin",
+    "PillagerExpMixin",
+    "ShulkerExpMixin",
+    "VindicatorExpMixin",
+    "WitchExpMixin",
+    "WitherSkeletonExpMixin",
+    "ZoglinExpMixin",
+    "ZombifiedPiglinExpMixin",
+    "StrayExpMixin",
+    "EvokerExpMixin",
+    "ElderGuardianExpMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
