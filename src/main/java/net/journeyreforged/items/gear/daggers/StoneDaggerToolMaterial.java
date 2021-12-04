@@ -1,4 +1,4 @@
-package net.journeyreforged.gear.daggers;
+package net.journeyreforged.items.gear.daggers;
 
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;

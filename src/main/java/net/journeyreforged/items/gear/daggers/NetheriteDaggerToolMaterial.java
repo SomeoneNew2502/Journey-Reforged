@@ -1,14 +1,14 @@
-package net.journeyreforged.gear.daggers;
+package net.journeyreforged.items.gear.daggers;
 
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
-public class DiamondDaggerToolMaterial implements ToolMaterial {
+public class NetheriteDaggerToolMaterial implements ToolMaterial {
 
     @Override
     public int getDurability() {
-        return 1561;
+        return 2031;
     }
 
     @Override
@@ -18,7 +18,7 @@ public class DiamondDaggerToolMaterial implements ToolMaterial {
 
     @Override
     public float getAttackDamage() {
-        return 5;
+        return 6;
     }
 
     @Override
@@ -28,12 +28,12 @@ public class DiamondDaggerToolMaterial implements ToolMaterial {
 
     @Override
     public int getEnchantability() {
-        return 10;
+        return 15;
     }
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.ofItems(Items.DIAMOND);
+        return Ingredient.ofItems(Items.GOLD_INGOT);
     }
     
 }

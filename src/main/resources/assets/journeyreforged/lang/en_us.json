@@ -4,5 +4,7 @@
     "item.journeyreforged.golden_dagger": "Golden Dagger",
     "item.journeyreforged.iron_dagger": "Iron Dagger",
     "item.journeyreforged.diamond_dagger": "Diamond Dagger",
-    "item.journeyreforged.netherite_dagger": "Netherite Dagger"
+    "item.journeyreforged.netherite_dagger": "Netherite Dagger",
+
+    "itemGroup.journeyreforged.journeyreforged": "Journey Reforged"
 }

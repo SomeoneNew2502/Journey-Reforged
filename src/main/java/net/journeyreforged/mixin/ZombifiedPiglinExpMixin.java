@@ -21,6 +21,7 @@ public abstract class ZombifiedPiglinExpMixin extends MobEntity {
     public void tick(CallbackInfo info) {
         int piglinexp = 0;
         
+        //Gets executed only once. Checks if the Entity is a Baby & sets the amount of XP dropped accordingly
         if (piglinexp == 0) {
             if (this.isBaby()) {
                 this.experiencePoints = 15;
