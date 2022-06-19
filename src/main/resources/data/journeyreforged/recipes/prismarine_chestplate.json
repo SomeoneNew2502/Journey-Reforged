@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+      "# #",
+      "###",
+      "###"
+  ],
+  "key": {
+      "#": {
+          "item": "journeyreforged:prismarine_ingot"
+      }
+  },
+  "result": {
+      "item": "journeyreforged:prismarine_helmet",
+      "count": 1
+  }
+}

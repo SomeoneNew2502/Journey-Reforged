@@ -2,6 +2,7 @@ package net.journeyreforged;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.journeyreforged.registries.EntityRegistry;
 import net.journeyreforged.registries.ItemRegistry;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -21,5 +22,6 @@ public class journeyreforged implements ModInitializer {
     @Override
     public void onInitialize() {
         ItemRegistry.init();
+        EntityRegistry.init();
     }
 }

@@ -5,6 +5,14 @@
     "item.journeyreforged.iron_dagger": "Iron Dagger",
     "item.journeyreforged.diamond_dagger": "Diamond Dagger",
     "item.journeyreforged.netherite_dagger": "Netherite Dagger",
+    "item.journeyreforged.prismarine_dagger": "Prismarine Dagger",
+
+    "item.journeyreforged.prismarine_ingot": "Prismarine Ingot",
+    
+    "item.journeyreforged.prismarine_helmet": "Prismarine Helmet",
+    "item.journeyreforged.prismarine_chestplate": "Prismarine Chestplate",
+    "item.journeyreforged.prismarine_leggings": "Prismarine Leggings",
+    "item.journeyreforged.prismarine_boots": "Prismarine Boots",
 
     "itemGroup.journeyreforged.journeyreforged": "Journey Reforged"
 }

@@ -1,14 +1,14 @@
 package net.journeyreforged.items.gear.daggers;
 
-import net.minecraft.item.Items;
+import net.journeyreforged.registries.ItemRegistry;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
-public class NetheriteDaggerToolMaterial implements ToolMaterial {
+public class PrismarineDaggerToolMaterial implements ToolMaterial {
 
     @Override
     public int getDurability() {
-        return 2031;
+        return 1561;
     }
 
     @Override
@@ -18,7 +18,7 @@ public class NetheriteDaggerToolMaterial implements ToolMaterial {
 
     @Override
     public float getAttackDamage() {
-        return 6;
+        return 7;
     }
 
     @Override
@@ -28,12 +28,12 @@ public class NetheriteDaggerToolMaterial implements ToolMaterial {
 
     @Override
     public int getEnchantability() {
-        return 15;
+        return 10;
     }
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.ofItems(Items.NETHERITE_INGOT);
+        return Ingredient.ofItems(ItemRegistry.PRISMARINE_INGOT);
     }
     
 }
