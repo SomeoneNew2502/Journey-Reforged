@@ -12,6 +12,7 @@ public class journeyreforged implements ModInitializer {
 
     public static final String MODID = "journeyreforged";
 
+    //Test
     //Creates a custom Creative Tab with a Diamond Dagger icon
     public static final ItemGroup JOURNEY_REFORGED_ITEM_GROUP = FabricItemGroupBuilder.create(
         new Identifier(MODID, "journeyreforged"))
