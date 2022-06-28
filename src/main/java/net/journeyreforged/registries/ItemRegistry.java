@@ -25,7 +25,7 @@ public class ItemRegistry {
     public static final Item GOLDEN_DAGGER = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "golden_dagger"), new DaggerBase(ToolMaterials.GOLD));
     public static final Item IRON_DAGGER = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "iron_dagger"), new DaggerBase(ToolMaterials.IRON));
     public static final Item DIAMOND_DAGGER = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "diamond_dagger"), new DaggerBase(ToolMaterials.DIAMOND));
-    public static final Item NETHERITE_DAGGER = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "netherite_dagger"), new DaggerBase(ToolMaterials.NETHERITE));
+    public static final Item NETHERITE_DAGGER = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "netherite_dagger"), new DaggerBase(ToolMaterials.NETHERITE, new Item.Settings().fireproof()));
     public static final Item PRISMARINE_DAGGER = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "prismarine_dagger"), new DaggerBase(JRToolMaterials.PRISMARINE));
 
     public static final Item PRISMARINE_INGOT = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "prismarine_ingot"), new Item(new Item.Settings().group(journeyreforged.JOURNEY_REFORGED_ITEM_GROUP)));
