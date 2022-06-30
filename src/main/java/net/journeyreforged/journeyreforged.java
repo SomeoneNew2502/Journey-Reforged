@@ -2,6 +2,7 @@ package net.journeyreforged;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.journeyreforged.events.LootTableModifiers;
 import net.journeyreforged.registries.EntityRegistry;
 import net.journeyreforged.registries.ItemRegistry;
 import net.minecraft.item.ItemGroup;
@@ -24,5 +25,6 @@ public class journeyreforged implements ModInitializer {
     public void onInitialize() {
         ItemRegistry.init();
         EntityRegistry.init();
+        LootTableModifiers.modifyLootTables();
     }
 }
