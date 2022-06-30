@@ -8,6 +8,9 @@ import net.minecraft.item.ToolMaterial;
 public class DaggerBase extends SwordItem {
 
     public DaggerBase(ToolMaterial material) {
-        super(material, -1, -2.0f, new Item.Settings().group(journeyreforged.JOURNEY_REFORGED_ITEM_GROUP));
+        super(material, 1, -2.0f, new Item.Settings().group(journeyreforged.JOURNEY_REFORGED_ITEM_GROUP));
+    }
+    public DaggerBase(ToolMaterial material, Item.Settings settings) {
+        super(material, 1, -2.0f, settings.group(journeyreforged.JOURNEY_REFORGED_ITEM_GROUP));
     }
 }

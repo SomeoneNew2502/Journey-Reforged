@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "addition": {
+        "item": "journeyreforged:prismarine_ingot"
+    },
+    "base": {
+        "item": "minecraft:diamond_axe"
+    },
+    "result": {
+        "item": "journeyreforged:prismarine_axe"
+    }
+}
