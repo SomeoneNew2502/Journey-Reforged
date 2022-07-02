@@ -1,7 +1,7 @@
-package net.journeyreforged.mixin;
+package net.journeyreforged.mixin.expchanges;
 
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.mob.WitherSkeletonEntity;
+import net.minecraft.entity.mob.ShulkerEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.world.World;
 
@@ -10,15 +10,15 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 
-@Mixin(WitherSkeletonEntity.class)
-public abstract class WitherSkeletonExpMixin extends MobEntity {
+@Mixin(ShulkerEntity.class)
+public abstract class ShulkerExpMixin extends MobEntity {
 
-    protected WitherSkeletonExpMixin(EntityType<? extends MobEntity> entityType, World world) {
+    protected ShulkerExpMixin(EntityType<? extends MobEntity> entityType, World world) {
         super(entityType, world);
     }
     
     @Inject(method = "<init>", at = @At("TAIL"))
     public void tick(CallbackInfo info) {
-        this.experiencePoints = 7;
+        this.experiencePoints = 10;
     }
 }

@@ -1,4 +1,4 @@
-package net.journeyreforged.mixin;
+package net.journeyreforged.mixin.expchanges;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.ZombifiedPiglinEntity;

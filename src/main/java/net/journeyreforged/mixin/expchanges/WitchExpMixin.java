@@ -1,7 +1,7 @@
-package net.journeyreforged.mixin;
+package net.journeyreforged.mixin.expchanges;
 
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.mob.PiglinEntity;
+import net.minecraft.entity.mob.WitchEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.world.World;
 
@@ -10,10 +10,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 
-@Mixin(PiglinEntity.class)
-public abstract class PiglinExpMixin extends MobEntity {
+@Mixin(WitchEntity.class)
+public abstract class WitchExpMixin extends MobEntity {
 
-    protected PiglinExpMixin(EntityType<? extends MobEntity> entityType, World world) {
+    protected WitchExpMixin(EntityType<? extends MobEntity> entityType, World world) {
         super(entityType, world);
     }
     

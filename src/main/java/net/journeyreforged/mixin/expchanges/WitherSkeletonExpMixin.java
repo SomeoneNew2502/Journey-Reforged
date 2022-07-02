@@ -1,7 +1,7 @@
-package net.journeyreforged.mixin;
+package net.journeyreforged.mixin.expchanges;
 
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.mob.VindicatorEntity;
+import net.minecraft.entity.mob.WitherSkeletonEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.world.World;
 
@@ -10,10 +10,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 
-@Mixin(VindicatorEntity.class)
-public abstract class VindicatorExpMixin extends MobEntity {
+@Mixin(WitherSkeletonEntity.class)
+public abstract class WitherSkeletonExpMixin extends MobEntity {
 
-    protected VindicatorExpMixin(EntityType<? extends MobEntity> entityType, World world) {
+    protected WitherSkeletonExpMixin(EntityType<? extends MobEntity> entityType, World world) {
         super(entityType, world);
     }
     
