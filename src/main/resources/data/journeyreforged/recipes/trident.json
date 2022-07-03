@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+      "!!!",
+      " # ",
+      " # "
+  ],
+  "key": {
+    "#": {
+        "item": "journeyreforged:prismarine_ingot"
+    },
+    "!": {
+        "item": "journeyreforged:prismarine_nugget"
+    }
+  },
+  "result": {
+      "item": "minecraft:trident",
+      "count": 1
+  }
+}

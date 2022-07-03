@@ -28,6 +28,7 @@ public class ItemRegistry {
     public static final Item NETHERITE_DAGGER = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "netherite_dagger"), new DaggerBase(ToolMaterials.NETHERITE, new Item.Settings().fireproof()));
     public static final Item PRISMARINE_DAGGER = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "prismarine_dagger"), new DaggerBase(JRToolMaterials.PRISMARINE));
 
+    public static final Item PRISMARINE_NUGGET = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "prismarine_nugget"), new Item(new Item.Settings().group(journeyreforged.JOURNEY_REFORGED_ITEM_GROUP)));
     public static final Item PRISMARINE_INGOT = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "prismarine_ingot"), new Item(new Item.Settings().group(journeyreforged.JOURNEY_REFORGED_ITEM_GROUP)));
 
     public static final Item PRISMARINE_HELMET = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "prismarine_helmet"), new BaseArmor(PRISMARINE_ARMOR, EquipmentSlot.HEAD));
