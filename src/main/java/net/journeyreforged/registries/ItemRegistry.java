@@ -42,4 +42,5 @@ public class ItemRegistry {
     public static final Item PRISMARINE_SHOVEL = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "prismarine_shovel"), new ShovelItem(JRToolMaterials.PRISMARINE, 1.5f, -3.0f, new Item.Settings().group(journeyreforged.JOURNEY_REFORGED_ITEM_GROUP)));
     public static final Item PRISMARINE_HOE = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "prismarine_hoe"), new JRHoeItem(JRToolMaterials.PRISMARINE, -3, 0f, new Item.Settings().group(journeyreforged.JOURNEY_REFORGED_ITEM_GROUP)));
 
+    public static final Item PEARL = Registry.register(Registry.ITEM, new Identifier(journeyreforged.MODID, "pearl"), new Item(new Item.Settings().group(journeyreforged.JOURNEY_REFORGED_ITEM_GROUP)));
 }

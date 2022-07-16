@@ -20,7 +20,8 @@
     "expchanges.ElderGuardianExpMixin",
     
     "ArmorValueNerfMixin",
-    "DisableMendingTradeMixin"
+    "DisableMendingTradeMixin",
+    "BowInfinityMendingMixin"
   ],
   "client": [
   ],
