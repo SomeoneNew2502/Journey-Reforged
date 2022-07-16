@@ -21,7 +21,8 @@
     
     "ArmorValueNerfMixin",
     "DisableMendingTradeMixin",
-    "BowInfinityMendingMixin"
+    "BowInfinityMendingMixin",
+    "LanternMixin"
   ],
   "client": [
   ],
