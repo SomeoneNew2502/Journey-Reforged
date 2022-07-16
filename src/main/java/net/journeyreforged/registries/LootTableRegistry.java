@@ -1,26 +1,26 @@
 package net.journeyreforged.registries;
 
-import net.journeyreforged.events.loottables.chests.Abandoned_Mineshaft;
-import net.journeyreforged.events.loottables.chests.Buried_Treasure;
-import net.journeyreforged.events.loottables.chests.End_City;
-import net.journeyreforged.events.loottables.chests.Jungle_Temple;
-import net.journeyreforged.events.loottables.chests.Mending_Book;
-import net.journeyreforged.events.loottables.chests.Nether_Bridge;
-import net.journeyreforged.events.loottables.chests.Pillager_Outpost;
-import net.journeyreforged.events.loottables.chests.Shipwreck_Treasure;
-import net.journeyreforged.events.loottables.chests.Stronghold_Corridor;
-import net.journeyreforged.events.loottables.chests.Stronghold_Crossing;
-import net.journeyreforged.events.loottables.chests.Underwater_Ruins;
-import net.journeyreforged.events.loottables.chests.Woodland_Mansion;
-import net.journeyreforged.events.loottables.chests.village.Village_Armorer;
-import net.journeyreforged.events.loottables.chests.village.Village_Butcher;
-import net.journeyreforged.events.loottables.chests.village.Village_Cartographer;
-import net.journeyreforged.events.loottables.chests.village.Village_Desert_House;
-import net.journeyreforged.events.loottables.chests.village.Village_Fisher;
-import net.journeyreforged.events.loottables.chests.village.Village_Plains_House;
-import net.journeyreforged.events.loottables.chests.village.Village_Savanna_House;
-import net.journeyreforged.events.loottables.chests.village.Village_Snowy_House;
-import net.journeyreforged.events.loottables.chests.village.Village_Taiga_House;
+import net.journeyreforged.events.loot_tables.chests.Abandoned_Mineshaft;
+import net.journeyreforged.events.loot_tables.chests.Buried_Treasure;
+import net.journeyreforged.events.loot_tables.chests.End_City;
+import net.journeyreforged.events.loot_tables.chests.Jungle_Temple;
+import net.journeyreforged.events.loot_tables.chests.Mending_Book;
+import net.journeyreforged.events.loot_tables.chests.Nether_Bridge;
+import net.journeyreforged.events.loot_tables.chests.Pillager_Outpost;
+import net.journeyreforged.events.loot_tables.chests.Shipwreck_Treasure;
+import net.journeyreforged.events.loot_tables.chests.Stronghold_Corridor;
+import net.journeyreforged.events.loot_tables.chests.Stronghold_Crossing;
+import net.journeyreforged.events.loot_tables.chests.Underwater_Ruins;
+import net.journeyreforged.events.loot_tables.chests.Woodland_Mansion;
+import net.journeyreforged.events.loot_tables.chests.village.Village_Armorer;
+import net.journeyreforged.events.loot_tables.chests.village.Village_Butcher;
+import net.journeyreforged.events.loot_tables.chests.village.Village_Cartographer;
+import net.journeyreforged.events.loot_tables.chests.village.Village_Desert_House;
+import net.journeyreforged.events.loot_tables.chests.village.Village_Fisher;
+import net.journeyreforged.events.loot_tables.chests.village.Village_Plains_House;
+import net.journeyreforged.events.loot_tables.chests.village.Village_Savanna_House;
+import net.journeyreforged.events.loot_tables.chests.village.Village_Snowy_House;
+import net.journeyreforged.events.loot_tables.chests.village.Village_Taiga_House;
 
 public class LootTableRegistry {
 
