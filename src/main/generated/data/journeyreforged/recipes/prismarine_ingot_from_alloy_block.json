@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "journeyreforged:prismarine_alloy_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "journeyreforged:prismarine_ingot"
+  }
+}

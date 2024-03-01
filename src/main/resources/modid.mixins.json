@@ -1,0 +1,45 @@
+{
+	"required": true,
+	"package": "net.journeyreforged.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"item.gear.dagger.DaggerTableMixin",
+		"item.gear.dagger.DaggerEnchantMixin",
+		"item.gear.dagger.DaggerAnvilMixin",
+
+		"item.gear.BowInfinityMendingMixin",
+
+		"entity.creeper.CreeperIgniteMixin",
+		"entity.villager.DisableMendingTradeMixin",
+		"entity.player.DisableSweepAttackMixin",
+
+		"experience.GhastExpMixin",
+		"experience.EndermanExpMixin",
+		"experience.HoglinExpMixin",
+		"experience.PiglinExpMixin",
+		"experience.PillagerExpMixin",
+		"experience.ShulkerExpMixin",
+		"experience.VindicatorExpMixin",
+		"experience.WitchExpMixin",
+		"experience.WitherSkeletonExpMixin",
+		"experience.ZoglinExpMixin",
+		"experience.ZombifiedPiglinExpMixin",
+		"experience.StrayExpMixin",
+		"experience.EvokerExpMixin",
+		"experience.ElderGuardianExpMixin",
+
+		"experience.ZombieExpMixin",
+		"experience.DrownedExpMixin",
+		"experience.HuskExpMixin",
+		"experience.SkeletonExpMixin",
+		"experience.CreeperExpMixin",
+
+		"enchantment.SoulSpeedDurabilityMixin",
+
+		"block.WarpedStemShearMixin"
+
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

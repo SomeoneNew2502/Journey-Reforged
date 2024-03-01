@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "journeyreforged",
+	"version": "1.0",
+	"name": "Journey Reforged",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/journeyreforged/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.journeyreforged.JourneyReforged"
+		],
+		"client": [
+			"net.journeyreforged.JourneyReforgedClient"
+		],
+		"fabric-datagen": [
+			"net.journeyreforged.JourneyReforgedDataGenerator"
+		]
+	},
+	"mixins": [
+		"modid.mixins.json",
+		{
+			"config": "journeyreforged.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.0",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

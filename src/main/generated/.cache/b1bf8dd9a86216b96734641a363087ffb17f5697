@@ -1,0 +1,8 @@
+// 1.20.4	2024-02-15T18:51:50.1699089	Journey Reforged/Tags for minecraft:block
+98f786b4357cc05ab08b38e16208a47af3a6ae62 data\minecraft\tags\blocks\logs_that_burn.json
+98f786b4357cc05ab08b38e16208a47af3a6ae62 data\journeyreforged\tags\blocks\shearable_warped_stem.json
+f72230556cf2f5ff9ba01d62390a999f85a4284d data\minecraft\tags\blocks\mineable\pickaxe.json
+db71d051e16698c0010aae9e10de27aeb22a1c33 data\minecraft\tags\blocks\mineable\axe.json
+c9e2ee2fe4a640d0a0e2df23c3799402b039ff2d data\minecraft\tags\blocks\needs_diamond_tool.json
+c9e2ee2fe4a640d0a0e2df23c3799402b039ff2d data\minecraft\tags\blocks\beacon_base_blocks.json
+17e04027e222d23b8385feb26f822a045aebb0d3 data\minecraft\tags\blocks\needs_stone_tool.json

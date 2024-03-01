@@ -1,0 +1,37 @@
+{
+    "item.journeyreforged.wooden_dagger": "Wooden Dagger",
+    "item.journeyreforged.stone_dagger": "Stone Dagger",
+    "item.journeyreforged.golden_dagger": "Golden Dagger",
+    "item.journeyreforged.iron_dagger": "Iron Dagger",
+    "item.journeyreforged.diamond_dagger": "Diamond Dagger",
+    "item.journeyreforged.netherite_dagger": "Netherite Dagger",
+    "item.journeyreforged.prismarine_dagger": "Prismarine Dagger",
+
+    "item.journeyreforged.prismarine_nugget": "Prismarine Nugget",
+    "item.journeyreforged.prismarine_ingot": "Prismarine Ingot",
+    
+    "item.journeyreforged.prismarine_helmet": "Prismarine Helmet",
+    "item.journeyreforged.prismarine_chestplate": "Prismarine Chestplate",
+    "item.journeyreforged.prismarine_leggings": "Prismarine Leggings",
+    "item.journeyreforged.prismarine_boots": "Prismarine Boots",
+
+    "item.journeyreforged.prismarine_sword": "Prismarine Sword",
+    "item.journeyreforged.prismarine_pickaxe": "Prismarine Pickaxe",
+    "item.journeyreforged.prismarine_axe": "Prismarine Axe",
+    "item.journeyreforged.prismarine_shovel": "Prismarine Shovel",
+    "item.journeyreforged.prismarine_hoe": "Prismarine Hoe",
+
+    "item.journeyreforged.pearl": "Pearl",
+    "item.journeyreforged.elder_guardian_scale": "Elder Guardian Scale",
+    "item.journeyreforged.warped_thread": "Warped Thread",
+    
+    "block.journeyreforged.pearl_block": "Pearl Block",
+    "block.journeyreforged.prismarine_alloy_block": "Block of Prismarine Alloy",
+    "block.journeyreforged.dethreaded_warped_stem": "Dethreaded Warped Stem",
+
+    "enchantment.journeyreforged.repossession": "Repossession",
+
+    "tooltip.prismarine_armor.speed": "+4% Speed",
+
+    "itemGroup.journey_reforged": "Journey Reforged"
+}

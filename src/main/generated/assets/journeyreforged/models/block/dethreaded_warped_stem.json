@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "journeyreforged:block/dethreaded_warped_stem_top",
+    "side": "journeyreforged:block/dethreaded_warped_stem"
+  }
+}

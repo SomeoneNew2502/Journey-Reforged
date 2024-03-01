@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_base_stone_overworld": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:base_stone_overworld"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_stone_dagger": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "journeyreforged:stone_dagger"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "journeyreforged:stone_dagger"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_base_stone_overworld",
+      "has_stone_dagger"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "journeyreforged:stone_dagger"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "journeyreforged:elder_guardian_scale"
+    },
+    {
+      "item": "journeyreforged:elder_guardian_scale"
+    },
+    {
+      "item": "journeyreforged:elder_guardian_scale"
+    },
+    {
+      "item": "journeyreforged:elder_guardian_scale"
+    },
+    {
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "item": "minecraft:copper_ingot"
+    }
+  ],
+  "result": {
+    "item": "journeyreforged:prismarine_ingot"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "journeyreforged:item/elder_guardian_scale"
+  }
+}
