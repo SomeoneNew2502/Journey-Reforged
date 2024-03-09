@@ -1,12 +1,8 @@
 package net.journeyreforged.event.loot_tables.chest;
 
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.journeyreforged.enchantment.RepossessionEnchantment;
 import net.journeyreforged.registry.EnchantmentRegistry;
 import net.journeyreforged.util.function.EnchantWithLevelRangeBuilder;
-import net.journeyreforged.util.function.EnchantWithLevelRangeFunction;
-import net.minecraft.enchantment.EnchantmentLevelEntry;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;

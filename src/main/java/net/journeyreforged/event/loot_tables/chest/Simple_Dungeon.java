@@ -1,7 +1,6 @@
 package net.journeyreforged.event.loot_tables.chest;
 
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.journeyreforged.registry.EnchantmentRegistry;
 import net.journeyreforged.util.function.EnchantWithLevelRangeBuilder;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
@@ -10,7 +9,6 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.*;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
-import net.minecraft.potion.Potions;
 import net.minecraft.util.Identifier;
 
 public class Simple_Dungeon {

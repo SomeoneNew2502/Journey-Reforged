@@ -24,8 +24,10 @@ public class Buried_Treasure {
             if (BURIED_TREASURE.equals(id)) {
                 LootPool.Builder pool = LootPool.builder()
                     .rolls(ConstantLootNumberProvider.create(1))
-                    .conditionally(RandomChanceLootCondition.builder(0.40f)) //The percentage chance for a roll to succeed
-                    .with(ItemEntry.builder(ItemRegistry.getItem("pearl")).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 5.0f))).build());
+                    .conditionally(RandomChanceLootCondition.builder(0.75f)) //The percentage chance for a roll to succeed
+                    .with(ItemEntry.builder(ItemRegistry.getItem("pearl")).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 5.0f))).weight(9).build())
+                    .with(ItemEntry.builder(ItemRegistry.getItem("prismarine_nugget")).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f,2.0f))).weight(1).build());
+
 
                 LootPool.Builder pool2 = LootPool.builder()
                     .rolls(ConstantLootNumberProvider.create(1))

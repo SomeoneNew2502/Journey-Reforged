@@ -23,9 +23,10 @@ public class Underwater_Ruins {
             if (UNDERWATER_RUIN_BIG.equals(id)) {
                 LootPool pool = LootPool.builder()
                     .rolls(ConstantLootNumberProvider.create(1))
-                    .conditionally(RandomChanceLootCondition.builder(0.35f)) //The percentage chance for a roll to succeed
-                    .with(ItemEntry.builder(ItemRegistry.getItem("pearl")).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))).build())
-                    .with(ItemEntry.builder(Items.PRISMARINE_SHARD).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))).build())
+                    .conditionally(RandomChanceLootCondition.builder(0.65f)) //The percentage chance for a roll to succeed
+                    .with(ItemEntry.builder(ItemRegistry.getItem("pearl")).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))).weight(35).build())
+                    .with(ItemEntry.builder(Items.PRISMARINE_SHARD).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))).weight(5).build())
+                    .with(ItemEntry.builder(ItemRegistry.getItem("prismarine_nugget")).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f,2.0f))).weight(1).build())
                     .build();
                     supplier.pool(pool).build();
 
@@ -37,8 +38,10 @@ public class Underwater_Ruins {
             if (UNDERWATER_RUIN_SMALL.equals(id)) {
                 LootPool pool = LootPool.builder()
                     .rolls(ConstantLootNumberProvider.create(1))
-                    .conditionally(RandomChanceLootCondition.builder(0.10f))
-                    .with(ItemEntry.builder(ItemRegistry.getItem("pearl")).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))).build())
+                    .conditionally(RandomChanceLootCondition.builder(0.45f)) //The percentage chance for a roll to succeed
+                    .with(ItemEntry.builder(ItemRegistry.getItem("pearl")).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))).weight(50).build())
+                    .with(ItemEntry.builder(Items.PRISMARINE_SHARD).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))).weight(15).build())
+                    .with(ItemEntry.builder(ItemRegistry.getItem("prismarine_nugget")).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f,2.0f))).weight(1).build())
                     .build();
                     supplier.pool(pool).build();
             }
