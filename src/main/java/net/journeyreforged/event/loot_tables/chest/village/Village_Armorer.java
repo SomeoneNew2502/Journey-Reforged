@@ -21,7 +21,7 @@ public class Village_Armorer {
         LootTableEvents.REPLACE.register((resourceManager, lootManager, id, original, source) -> {
             if (VILLAGE_ARMORER.equals(id)) {
                 LootPool pool = LootPool.builder()
-                    .rolls(UniformLootNumberProvider.create(1.0f, 5.0f))
+                    .rolls(UniformLootNumberProvider.create(2.0f, 5.0f))
                     .with(ItemEntry.builder(Items.BREAD).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f))).weight(6).build())
                     .with(ItemEntry.builder(Items.IRON_NUGGET).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 6.0f))).weight(6).build())
                     .with(ItemEntry.builder(Items.CHAIN).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))).weight(4).build())

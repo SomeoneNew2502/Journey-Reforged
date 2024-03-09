@@ -21,8 +21,8 @@ public class Shipwreck_Treasure {
             if (SHIPWRECK_TREASURE.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                     .rolls(ConstantLootNumberProvider.create(1.0f))
-                    .conditionally(RandomChanceLootCondition.builder(0.25f)) //The percentage chance for a roll to succeed
-                    .with(ItemEntry.builder(ItemRegistry.getItem("pearl"))).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 5.0f)).build());
+                    .conditionally(RandomChanceLootCondition.builder(0.30f)) //The percentage chance for a roll to succeed
+                    .with(ItemEntry.builder(ItemRegistry.getItem("pearl")).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f,7.0f))).build());
                 supplier.pool(poolBuilder).build();
             }
         }));

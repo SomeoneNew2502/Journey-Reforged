@@ -28,6 +28,7 @@ public class LootTableRegistry {
         Village_Taiga_House.modifyLootTables();
 
         Abandoned_Mineshaft.modifyLootTables();
+        Ancient_City.modifyLootTables();
         Buried_Treasure.modifyLootTables();
         Desert_Pyramid.modifyLootTables();
         End_City.modifyLootTables();
