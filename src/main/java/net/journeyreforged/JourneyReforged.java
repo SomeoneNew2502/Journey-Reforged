@@ -1,13 +1,11 @@
 package net.journeyreforged;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.journeyreforged.registry.*;
 import net.journeyreforged.util.function.EnchantWithLevelRangeSerializer;
-import net.journeyreforged.worldgen.biome.feature.SimpleDungeon;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
