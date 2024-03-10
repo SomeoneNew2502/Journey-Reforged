@@ -46,7 +46,5 @@ public class JourneyReforged implements ModInitializer {
 		StrippableBlockRegistry.register(BlockRegistry.DETHREADED_WARPED_STEM, Blocks.STRIPPED_WARPED_STEM);
 
 		FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.DETHREADED_WARPED_STEM, 5, 5);
-
-		SimpleDungeon.init();
 	}
 }

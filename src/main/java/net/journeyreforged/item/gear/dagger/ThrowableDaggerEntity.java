@@ -9,10 +9,14 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonPart;
+import net.minecraft.entity.boss.dragon.phase.Phase;
+import net.minecraft.entity.boss.dragon.phase.PhaseType;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.*;
@@ -28,6 +32,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -70,14 +75,27 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
     // Method to initialize extra properties
     public void initialize(LivingEntity owner) {
         this.setOwner(owner);
-        if (owner instanceof PlayerEntity) {
-            this.RepossessionLevel = EnchantmentHelper.getLevel(EnchantmentRegistry.REPOSSESSION, owner.getMainHandStack());
-            this.sharpnessLevel = EnchantmentHelper.getLevel(Enchantments.SHARPNESS, owner.getMainHandStack());
-            this.smiteLevel = EnchantmentHelper.getLevel(Enchantments.SMITE, owner.getMainHandStack());
-            this.baneOfArthropodsLevel = EnchantmentHelper.getLevel(Enchantments.BANE_OF_ARTHROPODS, owner.getMainHandStack());
+        ItemStack mainHandStack = owner.getMainHandStack();
+        ItemStack offHandStack = owner.getOffHandStack();
+        ItemStack throwStack;
 
+        // Determine which hand holds the dagger
+        if (!mainHandStack.isEmpty() && mainHandStack.getItem() instanceof DaggerItem) { // Assume DaggerItem is your dagger class
+            throwStack = mainHandStack;
+        } else if (!offHandStack.isEmpty() && offHandStack.getItem() instanceof DaggerItem) {
+            throwStack = offHandStack;
+        } else {
+            // Fallback in case neither hand has the dagger (should not happen normally)
+            throwStack = mainHandStack; // Or handle this case differently
         }
+
+        // Use the determined stack for enchantment levels
+        this.RepossessionLevel = EnchantmentHelper.getLevel(EnchantmentRegistry.REPOSSESSION, throwStack);
+        this.sharpnessLevel = EnchantmentHelper.getLevel(Enchantments.SHARPNESS, throwStack);
+        this.smiteLevel = EnchantmentHelper.getLevel(Enchantments.SMITE, throwStack);
+        this.baneOfArthropodsLevel = EnchantmentHelper.getLevel(Enchantments.BANE_OF_ARTHROPODS, throwStack);
     }
+
 
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
@@ -157,7 +175,13 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
                 livingEntity.damage(daggerDamage.of(this.getWorld(), daggerDamage.dagger_projectile, getOwner()), baseDamage);
                 this.hitEnderman = true;
             }
-            if (hitEntity instanceof EnderDragonPart && !hasHitEntity) {
+            if (hitEntity instanceof EndCrystalEntity) {
+                EndCrystalEntity crystal = (EndCrystalEntity) hitEntity;
+
+                float baseDamage = this.getDaggerType().getDamage(); // Define the damage amount
+                // Assuming generic damage; adjust as needed
+                crystal.damage(daggerDamage.of(this.getWorld(), daggerDamage.dagger_projectile, getOwner()), baseDamage);
+
                 this.hasHitEntity = true; // Update the flag to prevent further entity hits
 
                 // Make the dagger fall like a trident after hitting an entity
@@ -169,6 +193,60 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
                 // Example: Bounce off slightly upon hitting an entity
                 Vec3d bounceDirection = this.getVelocity().multiply(-0.3, 1, -0.3); // Reverse horizontal velocity slightly
                 this.setVelocity(bounceDirection);
+
+            }
+            if (hitEntity instanceof EnderDragonPart && !hasHitEntity) {
+                EnderDragonPart dragonPart = (EnderDragonPart) hitEntity;
+                Entity dragon = dragonPart.owner;
+
+                if (dragon instanceof EnderDragonEntity) {
+                    EnderDragonEntity dragonEntity = (EnderDragonEntity) dragon;
+                    Phase currentPhase = dragonEntity.getPhaseManager().getCurrent();
+
+                    // Assuming there are static instances or identifiable properties of PhaseType for different phases
+                    if (currentPhase.getType() == PhaseType.LANDING || currentPhase.getType() == PhaseType.TAKEOFF || currentPhase.getType() == PhaseType.SITTING_FLAMING || currentPhase.getType() == PhaseType.SITTING_SCANNING) {
+                        // Do nothing
+                    } else {
+                        float baseDamage = this.getDaggerType().getDamage(); // Define the damage amount
+
+                        float finalDamage;
+                        if (sharpnessLevel > 0) {
+                            finalDamage = baseDamage + (0.5F * sharpnessLevel + 0.5F);
+                            dragonEntity.damage(daggerDamage.of(this.getWorld(), daggerDamage.dagger_projectile, getOwner()), finalDamage);
+                        } else if (smiteLevel > 0 && dragonEntity.isUndead()) {
+                            finalDamage = baseDamage + (2.5F * smiteLevel);
+                            dragonEntity.damage(daggerDamage.of(this.getWorld(), daggerDamage.dagger_projectile, getOwner()), finalDamage);
+                        } else if (baneOfArthropodsLevel > 0 && isArthropod(dragonEntity)) {
+                            finalDamage = baseDamage + (2.5F * baneOfArthropodsLevel);
+                            dragonEntity.damage(daggerDamage.of(this.getWorld(), daggerDamage.dagger_projectile, getOwner()), finalDamage);
+
+                            // Calculate the duration of the Slowness effect
+                            int duration = 20 + 10 * baneOfArthropodsLevel; // Starting at 1 second, increase by 0.5 seconds per level
+                            // Ensure the duration does not exceed the maximum
+                            duration = Math.min(duration, 70); // Max duration at Bane of Arthropods V is 3.5 seconds or 70 ticks
+
+                            // Apply the Slowness effect
+                            dragonEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, duration, 3)); // Slowness IV
+                        } else {
+                            dragonEntity.damage(daggerDamage.of(this.getWorld(), daggerDamage.dagger_projectile, getOwner()), baseDamage);
+                        }
+
+                    }
+
+                    this.hasHitEntity = true; // Update the flag to prevent further entity hits
+
+                    // Make the dagger fall like a trident after hitting an entity
+                    this.setVelocity(Vec3d.ZERO); // Stop the forward movement
+                    this.setNoGravity(false); // Allow the dagger to be affected by gravity
+                    this.setPitch(90.0F); // Optionally adjust the pitch to simulate a falling motion
+
+                    // To prevent piercing through all mobs, you can make the dagger bounce off slightly or just stop
+                    // Example: Bounce off slightly upon hitting an entity
+                    Vec3d bounceDirection = this.getVelocity().multiply(-0.3, 1, -0.3); // Reverse horizontal velocity slightly
+                    this.setVelocity(bounceDirection);
+                }
+
+
             } else if (hitEntity instanceof LivingEntity && !hasHitEntity && !hitEnderman) {
                 LivingEntity livingEntity = (LivingEntity) hitEntity;
 
