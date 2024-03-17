@@ -84,6 +84,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 null // reverseGroup
         );
 
+        // For compacting warped thread to warped weave block
+        offerReversibleCompactingRecipes(
+                exporter,
+                RecipeCategory.BUILDING_BLOCKS, // reverseCategory
+                ItemRegistry.getItem("warped_thread"), // baseItem
+                RecipeCategory.DECORATIONS, // compactingCategory
+                BlockRegistry.WARPED_WEAVE, // compactItem
+                "warped_weave_compact", // compactingId, custom ID for compacting recipe
+                null, // compactingGroup
+                "warped_thread_from_warped_weave", // reverseId, custom ID for decompressing recipe
+                null // reverseGroup
+        );
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.TRIDENT, 1)
                 .pattern("NNN")
                 .pattern(" I ")
