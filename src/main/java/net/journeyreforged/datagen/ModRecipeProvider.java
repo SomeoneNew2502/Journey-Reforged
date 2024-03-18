@@ -84,18 +84,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 null // reverseGroup
         );
 
-        // For compacting warped thread to warped weave block
-        offerReversibleCompactingRecipes(
-                exporter,
-                RecipeCategory.BUILDING_BLOCKS, // reverseCategory
-                ItemRegistry.getItem("warped_thread"), // baseItem
-                RecipeCategory.DECORATIONS, // compactingCategory
-                BlockRegistry.WARPED_WEAVE, // compactItem
-                "warped_weave_compact", // compactingId, custom ID for compacting recipe
-                null, // compactingGroup
-                "warped_thread_from_warped_weave", // reverseId, custom ID for decompressing recipe
-                null // reverseGroup
-        );
+        // One-way recipe for crafting warped thread into warped weave
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, BlockRegistry.WARPED_WEAVE, 1)
+                .pattern("TTT")
+                .pattern("TTT")
+                .pattern("TTT")
+                .input('T', ItemRegistry.getItem("warped_thread"))
+                .criterion(hasItem(ItemRegistry.getItem("warped_thread")), conditionsFromItem(ItemRegistry.getItem("warped_thread")))
+                .criterion(hasItem(BlockRegistry.WARPED_WEAVE), conditionsFromItem(BlockRegistry.WARPED_WEAVE))
+                .offerTo(exporter, new Identifier("journeyreforged", "warped_weave"));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.TRIDENT, 1)
                 .pattern("NNN")
