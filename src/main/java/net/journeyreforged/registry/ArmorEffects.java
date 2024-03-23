@@ -1,12 +1,9 @@
 package net.journeyreforged.registry;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multimap;
 import net.journeyreforged.item.gear.armor.PrismarineArmorMaterial;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -43,14 +40,26 @@ public class ArmorEffects extends ArmorItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if(!world.isClient()) {
-            if(entity instanceof PlayerEntity player && hasFullSuitOfArmorOn(player)) {
-                evaluateArmorEffects(player);
-            }
-            if(entity instanceof PlayerEntity player) {
-                applyMovementSpeedModifier(player);
-            }
+        if (!world.isClient() && entity instanceof PlayerEntity player) {
+            handlePlayerTick(player);
         }
+        super.inventoryTick(stack, world, entity, slot, selected);
+    }
+
+    private void handlePlayerTick(PlayerEntity player) {
+        // Evaluate effects and modifiers for every tick
+        if (hasFullSuitOfArmorOn(player)) {
+            evaluateArmorEffects(player);
+        }
+    }
+
+    // This method is now static and should be called from ArmorTickHandler
+    public static void updatePlayerAttributes(PlayerEntity player) {
+        // This logic ensures that speed modifiers are applied or removed based on armor state
+        applyOrRemoveSpeedModifierForArmorPiece(player, EquipmentSlot.FEET, MOVEMENT_SPEED_BOOTS_UUID);
+        applyOrRemoveSpeedModifierForArmorPiece(player, EquipmentSlot.LEGS, MOVEMENT_SPEED_LEGGINGS_UUID);
+        applyOrRemoveSpeedModifierForArmorPiece(player, EquipmentSlot.CHEST, MOVEMENT_SPEED_CHESTPLATE_UUID);
+        applyOrRemoveSpeedModifierForArmorPiece(player, EquipmentSlot.HEAD, MOVEMENT_SPEED_HELMET_UUID);
     }
 
     @Override
@@ -81,41 +90,24 @@ public class ArmorEffects extends ArmorItem {
         super.appendTooltip(stack, world, tooltip, context);
     }
 
-
-    private void applyMovementSpeedModifier(PlayerEntity player) {
-        // This example assumes you have some method to check if a specific armor piece is worn
-        // and apply/remove modifiers accordingly.
-
-        applyOrRemoveSpeedModifierForArmorPiece(player, EquipmentSlot.FEET, MOVEMENT_SPEED_BOOTS_UUID);
-        applyOrRemoveSpeedModifierForArmorPiece(player, EquipmentSlot.LEGS, MOVEMENT_SPEED_LEGGINGS_UUID);
-        applyOrRemoveSpeedModifierForArmorPiece(player, EquipmentSlot.CHEST, MOVEMENT_SPEED_CHESTPLATE_UUID);
-        applyOrRemoveSpeedModifierForArmorPiece(player, EquipmentSlot.HEAD, MOVEMENT_SPEED_HELMET_UUID);
-    }
-    // Assuming this method is called appropriately within your code
-    private void applyOrRemoveSpeedModifierForArmorPiece(PlayerEntity player, EquipmentSlot slot, UUID uuid) {
+    // Moved the logic for applying or removing speed modifier into a static context
+    private static void applyOrRemoveSpeedModifierForArmorPiece(PlayerEntity player, EquipmentSlot slot, UUID uuid) {
         ItemStack armorPiece = player.getEquippedStack(slot);
-        boolean isPrismarineArmor = armorPiece.getItem() instanceof ArmorItem && ((ArmorItem) armorPiece.getItem()).getMaterial() instanceof PrismarineArmorMaterial;
+        boolean isPrismarineArmor = armorPiece.getItem() instanceof ArmorItem && ((ArmorItem) armorPiece.getItem()).getMaterial() == PrismarineArmorMaterial.INSTANCE;
 
-        // Retrieve the player's attribute instance for movement speed
         var movementSpeedAttr = player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
-
-        if (movementSpeedAttr == null) {
-            return; // Exit if the movement speed attribute is not found for some reason
-        }
+        if (movementSpeedAttr == null) return;
 
         EntityAttributeModifier modifier = new EntityAttributeModifier(uuid, "Prismarine speed boost for " + slot.getName(), SPEED_INCREASE_PER_PIECE, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
-
-        // Check whether the modifier is already applied
         boolean hasModifier = movementSpeedAttr.hasModifier(modifier);
 
         if (isPrismarineArmor && !hasModifier) {
-            // Apply the modifier if the armor is worn and not already applied
             movementSpeedAttr.addTemporaryModifier(modifier);
-        } else if (!isPrismarineArmor && hasModifier) {
-            // Remove the modifier if the armor is not worn
+        } else if ((!isPrismarineArmor || armorPiece.isEmpty()) && hasModifier) {
             movementSpeedAttr.removeModifier(uuid);
         }
     }
+
 
 
     private void evaluateArmorEffects(PlayerEntity player) {
