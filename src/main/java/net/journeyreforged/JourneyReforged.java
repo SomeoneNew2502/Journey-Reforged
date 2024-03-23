@@ -14,7 +14,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-
 public class JourneyReforged implements ModInitializer {
 
 	public static final String MODID = "journeyreforged";
@@ -36,6 +35,7 @@ public class JourneyReforged implements ModInitializer {
 		EntityRegistry.init();
 		LootTableRegistry.init();
 		EnchantmentRegistry.init();
+		ListenerRegistry.init();
 
 		Registry.register(Registries.LOOT_FUNCTION_TYPE, new Identifier("journeyreforged", "enchant_with_level_range"), ENCHANT_WITH_LEVEL_RANGE_LOOT_FUNCTION);
 
