@@ -158,7 +158,7 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
 
-        if (hitResult.getType() == HitResult.Type.ENTITY && !this.isReturning) {
+        if (hitResult.getType() == HitResult.Type.ENTITY && !this.isReturning && !hasHitEntity) {
             EntityHitResult entityHitResult = (EntityHitResult) hitResult;
             Entity hitEntity = entityHitResult.getEntity();
 
@@ -177,7 +177,7 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
                 crystal.damage(daggerDamage.of(this.getWorld(), daggerDamage.dagger_projectile, getOwner()), baseDamage);
             }
 
-            if (hitEntity instanceof EnderDragonPart dragonPart && !hasHitEntity) {
+            if (hitEntity instanceof EnderDragonPart dragonPart) {
                 Entity dragon = dragonPart.owner;
 
                 if (dragon instanceof EnderDragonEntity dragonEntity) {
@@ -198,7 +198,7 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
                         }
                     }
                 }
-            } else if (hitEntity instanceof LivingEntity livingEntity && !hasHitEntity) {
+            } else if (hitEntity instanceof LivingEntity livingEntity) {
 
                 float baseDamage = this.getDaggerType().getDamage(); // Define the damage amount
 
