@@ -32,7 +32,7 @@ public class ItemRegistry {
         register("prismarine_nugget", new JRItem());
         register("prismarine_ingot", new JRItem());
 
-        register("prismarine_sword", new JRSwordItem(JRToolMaterials.PRISMARINE, 2, -2.4f));
+        register("prismarine_sword", new JRSwordItem(JRToolMaterials.PRISMARINE, 3, -2.4f));
         register("prismarine_pickaxe", new JRPickaxeItem(JRToolMaterials.PRISMARINE, 1, -2.8f));
         register("prismarine_axe", new JRAxeItem(JRToolMaterials.PRISMARINE, 5, -3.0f));
         register("prismarine_shovel", new JRShovelItem(JRToolMaterials.PRISMARINE, 1.5f, -3.0f));

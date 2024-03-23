@@ -20,7 +20,7 @@ public class Elder_Guardian {
             if (ELDER_GUARDIAN.equals(id)) {
                 LootPool.Builder pool = LootPool.builder()
                     .rolls(ConstantLootNumberProvider.create(1))
-                    .with(ItemEntry.builder(ItemRegistry.getItem("elder_guardian_scale")).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(5.0f, 5.0f))).build());
+                    .with(ItemEntry.builder(ItemRegistry.getItem("elder_guardian_scale")).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 5.0f))).build());
                 supplier.pool(pool.build());
             }
         });

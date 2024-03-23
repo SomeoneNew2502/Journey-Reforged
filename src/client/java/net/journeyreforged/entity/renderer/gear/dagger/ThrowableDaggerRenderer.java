@@ -39,7 +39,7 @@ public class ThrowableDaggerRenderer extends EntityRenderer<ThrowableDaggerEntit
 
         Matrix4f jomlMatrix = new Matrix4f(); // Initialize JOML Matrix4f for transformations
 
-        if (entity.isStuck()) {
+        if (entity.isStuck() || entity.hasHitEntity) {
             // When the dagger is stuck, apply a fixed rotation based on stored yaw and pitch
             Quaternionf rotation = new Quaternionf().rotateY((float)Math.toRadians(-entity.getStuckYaw())); // Convert degrees to radians and apply yaw rotation
             rotation.rotateX((float)Math.toRadians(entity.getStuckPitch())); // Apply pitch rotation to make the dagger lie flat

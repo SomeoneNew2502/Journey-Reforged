@@ -3,16 +3,19 @@ package net.journeyreforged.item.gear.dagger;
 import net.journeyreforged.damagesource.daggerDamage;
 import net.journeyreforged.item.JRToolMaterials;
 import net.journeyreforged.registry.EnchantmentRegistry;
-import net.journeyreforged.registry.EntityRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonPart;
+import net.minecraft.entity.boss.dragon.phase.Phase;
+import net.minecraft.entity.boss.dragon.phase.PhaseType;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.*;
@@ -25,6 +28,7 @@ import net.minecraft.item.ToolMaterials;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -34,10 +38,8 @@ import net.minecraft.world.World;
 import net.journeyreforged.registry.ItemRegistry;
 
 public class ThrowableDaggerEntity extends ThrownItemEntity {
-    private boolean hasHitEntity = false; // Flag to track if the dagger has already hit an entity
+    public boolean hasHitEntity = false; // Flag to track if the dagger has already hit an entity
     private boolean isStuck = false;
-    private float stuckYaw = 0.0F;
-    private float stuckPitch = 0.0F;
     private int RepossessionLevel;
     private int sharpnessLevel;
     private int smiteLevel;
@@ -47,7 +49,6 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
     public int age;
     private float rotationAngle = 0.0F; // Rotation angle in degrees
     private boolean executedRepossessionSound = false;
-    private final float rotationSpeed = 60.0F; // Degrees rotated per tick, adjust as needed
     private boolean hitEnderman = false;
     private int pickupDelay; // Ticks until the item can be picked up
     private DaggerType daggerType;
@@ -70,13 +71,25 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
     // Method to initialize extra properties
     public void initialize(LivingEntity owner) {
         this.setOwner(owner);
-        if (owner instanceof PlayerEntity) {
-            this.RepossessionLevel = EnchantmentHelper.getLevel(EnchantmentRegistry.REPOSSESSION, owner.getMainHandStack());
-            this.sharpnessLevel = EnchantmentHelper.getLevel(Enchantments.SHARPNESS, owner.getMainHandStack());
-            this.smiteLevel = EnchantmentHelper.getLevel(Enchantments.SMITE, owner.getMainHandStack());
-            this.baneOfArthropodsLevel = EnchantmentHelper.getLevel(Enchantments.BANE_OF_ARTHROPODS, owner.getMainHandStack());
+        ItemStack mainHandStack = owner.getMainHandStack();
+        ItemStack offHandStack = owner.getOffHandStack();
+        ItemStack throwStack;
 
+        // Determine which hand holds the dagger
+        if (!mainHandStack.isEmpty() && mainHandStack.getItem() instanceof DaggerItem) { // Assume DaggerItem is your dagger class
+            throwStack = mainHandStack;
+        } else if (!offHandStack.isEmpty() && offHandStack.getItem() instanceof DaggerItem) {
+            throwStack = offHandStack;
+        } else {
+            // Fallback in case neither hand has the dagger (should not happen normally)
+            throwStack = mainHandStack; // Or handle this case differently
         }
+
+        // Use the determined stack for enchantment levels
+        this.RepossessionLevel = EnchantmentHelper.getLevel(EnchantmentRegistry.REPOSSESSION, throwStack);
+        this.sharpnessLevel = EnchantmentHelper.getLevel(Enchantments.SHARPNESS, throwStack);
+        this.smiteLevel = EnchantmentHelper.getLevel(Enchantments.SMITE, throwStack);
+        this.baneOfArthropodsLevel = EnchantmentHelper.getLevel(Enchantments.BANE_OF_ARTHROPODS, throwStack);
     }
 
     @Override
@@ -145,7 +158,7 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
 
-        if (hitResult.getType() == HitResult.Type.ENTITY && !this.isReturning) {
+        if (hitResult.getType() == HitResult.Type.ENTITY && !this.isReturning && !hasHitEntity) {
             EntityHitResult entityHitResult = (EntityHitResult) hitResult;
             Entity hitEntity = entityHitResult.getEntity();
 
@@ -157,20 +170,35 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
                 livingEntity.damage(daggerDamage.of(this.getWorld(), daggerDamage.dagger_projectile, getOwner()), baseDamage);
                 this.hitEnderman = true;
             }
-            if (hitEntity instanceof EnderDragonPart && !hasHitEntity) {
-                this.hasHitEntity = true; // Update the flag to prevent further entity hits
+            if (hitEntity instanceof EndCrystalEntity crystal) {
 
-                // Make the dagger fall like a trident after hitting an entity
-                this.setVelocity(Vec3d.ZERO); // Stop the forward movement
-                this.setNoGravity(false); // Allow the dagger to be affected by gravity
-                this.setPitch(90.0F); // Optionally adjust the pitch to simulate a falling motion
+                float baseDamage = this.getDaggerType().getDamage(); // Define the damage amount
+                // Assuming generic damage; adjust as needed
+                crystal.damage(daggerDamage.of(this.getWorld(), daggerDamage.dagger_projectile, getOwner()), baseDamage);
+            }
 
-                // To prevent piercing through all mobs, you can make the dagger bounce off slightly or just stop
-                // Example: Bounce off slightly upon hitting an entity
-                Vec3d bounceDirection = this.getVelocity().multiply(-0.3, 1, -0.3); // Reverse horizontal velocity slightly
-                this.setVelocity(bounceDirection);
-            } else if (hitEntity instanceof LivingEntity && !hasHitEntity && !hitEnderman) {
-                LivingEntity livingEntity = (LivingEntity) hitEntity;
+            if (hitEntity instanceof EnderDragonPart dragonPart) {
+                Entity dragon = dragonPart.owner;
+
+                if (dragon instanceof EnderDragonEntity dragonEntity) {
+                    Phase currentPhase = dragonEntity.getPhaseManager().getCurrent();
+
+                    // Assuming there are static instances or identifiable properties of PhaseType for different phases
+                    if (currentPhase.getType() == PhaseType.LANDING || currentPhase.getType() == PhaseType.TAKEOFF || currentPhase.getType() == PhaseType.SITTING_FLAMING || currentPhase.getType() == PhaseType.SITTING_SCANNING) {
+                        //Do nothing
+                    } else {
+                        float baseDamage = this.getDaggerType().getDamage(); // Define the damage amount
+
+                        float finalDamage;
+                        if (sharpnessLevel > 0) {
+                            finalDamage = baseDamage + (0.5F * sharpnessLevel + 0.5F);
+                            dragonEntity.damage(daggerDamage.of(this.getWorld(), daggerDamage.dagger_projectile, getOwner()), finalDamage);
+                        } else {
+                            dragonEntity.damage(daggerDamage.of(this.getWorld(), daggerDamage.dagger_projectile, getOwner()), baseDamage);
+                        }
+                    }
+                }
+            } else if (hitEntity instanceof LivingEntity livingEntity) {
 
                 float baseDamage = this.getDaggerType().getDamage(); // Define the damage amount
 
@@ -195,33 +223,24 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
                 } else {
                     livingEntity.damage(daggerDamage.of(this.getWorld(), daggerDamage.dagger_projectile, getOwner()), baseDamage);
                 }
+            }
 
+            if (!this.hitEnderman) {
                 this.hasHitEntity = true; // Update the flag to prevent further entity hits
-
-                // Damage the original item stack if it's not empty and the owner is a player
-                if (!this.originalItemStack.isEmpty() && this.getOwner() instanceof PlayerEntity) {
-                    this.originalItemStack.damage(1, random, null); // Null will avoid killing the entity that threw the dagger
-                }
 
                 // Make the dagger fall like a trident after hitting an entity
                 this.setVelocity(Vec3d.ZERO); // Stop the forward movement
                 this.setNoGravity(false); // Allow the dagger to be affected by gravity
-                this.setPitch(90.0F); // Optionally adjust the pitch to simulate a falling motion
 
                 // To prevent piercing through all mobs, you can make the dagger bounce off slightly or just stop
                 // Example: Bounce off slightly upon hitting an entity
-                Vec3d bounceDirection = this.getVelocity().multiply(-0.1, 1, -0.1); // Reverse horizontal velocity slightly
+                Vec3d bounceDirection = this.getVelocity().multiply(-0.3, 1, -0.3); // Reverse horizontal velocity slightly
                 this.setVelocity(bounceDirection);
             }
-            hitEnderman = false;
-
         } else if (hitResult.getType() == HitResult.Type.BLOCK && !isReturning) {
             // Handle getting stuck in a block
             this.isStuck = true;
             this.setVelocity(Vec3d.ZERO);
-            //this.setNoGravity(true); // The dagger will no longer fall, simulating being stuck in the block
-            //this.stuckYaw = this.getYaw();
-            //this.stuckPitch = this.getPitch();
             }
         }
 
@@ -231,11 +250,11 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
     }
 
     public float getStuckYaw() {
-        return stuckYaw;
+        return 0.0F;
     }
 
     public float getStuckPitch() {
-        return stuckPitch;
+        return 0.0F;
     }
 
     // Modify the existing constructor or add a new method to set the item stack
@@ -252,12 +271,12 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
             if (pickedUp) {
                 player.sendPickup(this, 1);
                 this.age = 0;
-                this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_ITEM_PICKUP, getSoundCategory().PLAYERS, 0.2F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+                getSoundCategory();
+                this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
                 this.remove(RemovalReason.DISCARDED);
             }
         }
     }
-
 
     public void setProperties(LivingEntity user, float pitch, float yaw, float roll, float velocity, float divergence) {
         // Set the throwable entity's position and initial motion.
@@ -277,6 +296,8 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
     public void tick() {
         super.tick(); // Ensure the base class tick behavior is executed first.
 
+        // Degrees rotated per tick, adjust as needed
+        float rotationSpeed = 60.0F;
         updateRotation(rotationSpeed);
 
         if (this.pickupDelay > 0 && (hasHitEntity || isStuck)) {
@@ -291,7 +312,8 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
             // Play the loyalty sound effect when the dagger starts returning
             if (!this.getWorld().isClient && !executedRepossessionSound) {
                 executedRepossessionSound = true;
-                this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ITEM_TRIDENT_RETURN, getSoundCategory().PLAYERS, 10.0F, 1.0F);
+                getSoundCategory();
+                this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ITEM_TRIDENT_RETURN, SoundCategory.PLAYERS, 10.0F, 1.0F);
             }
 
             if (this.getOwner() != null && !(this.getOwner().isRemoved()) && this.getWorld() instanceof ServerWorld) {
@@ -317,7 +339,6 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
         if (this.RepossessionLevel == 0) {
             if (this.hasHitEntity || this.isStuck) {
                 this.age++;
-                //System.out.println("Age: " + this.age);
                 if (!this.getWorld().isClient && this.age > 6000) {
                     this.remove(RemovalReason.DISCARDED); // Remove the entity
                 }
@@ -340,6 +361,6 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
     private boolean isArthropod(LivingEntity entity) {
         // This method checks if the entity is one of the types affected by Bane of Arthropods
         // You can use instanceof checks for each specific entity type (Spider, CaveSpider, Silverfish, Endermite)
-        return entity instanceof SpiderEntity || entity instanceof CaveSpiderEntity || entity instanceof SilverfishEntity || entity instanceof EndermiteEntity;
+        return entity instanceof SpiderEntity || entity instanceof SilverfishEntity || entity instanceof EndermiteEntity;
     }
 }
