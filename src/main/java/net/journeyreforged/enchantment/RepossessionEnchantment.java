@@ -3,6 +3,7 @@ package net.journeyreforged.enchantment;
 import net.journeyreforged.item.gear.dagger.DaggerItem;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.enchantment.PiercingEnchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 
