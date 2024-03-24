@@ -2,6 +2,7 @@ package net.journeyreforged.registry;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.journeyreforged.JourneyReforged;
+import net.journeyreforged.block.WarpedWeaveBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;
