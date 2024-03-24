@@ -17,6 +17,6 @@ public class WarpedWeaveBlock extends Block {
         // To reduce fall damage like a hay bale, apply a reduced damage multiplier.
         // Assuming DamageSource.FALL is the correct way to reference fall damage in your modding environment.
         // The damage multiplier (0.2F in this case) simulates the hay bale's behavior.
-        entity.handleFallDamage(fallDistance, 0.2F, world.getDamageSources().fall());
+        entity.handleFallDamage(fallDistance, 0.15F, world.getDamageSources().fall());
     }
 }
