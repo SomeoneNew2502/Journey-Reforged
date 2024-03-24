@@ -11,7 +11,7 @@ import net.minecraft.sound.SoundEvents;
 public class PrismarineArmorMaterial implements ArmorMaterial {
     public static final PrismarineArmorMaterial INSTANCE = new PrismarineArmorMaterial();
     private static final int[] BASE_DURABILITY = new int[] {11, 16, 15, 13};
-    private static final int[] PROTECTION_VALUES = new int[] {3, 8, 6, 3};
+    private static final int[] PROTECTION_VALUES = new int[] {3, 5, 4, 3};
     private int X = 33;
 
     @Override
@@ -65,7 +65,7 @@ public class PrismarineArmorMaterial implements ArmorMaterial {
     }
     @Override
     public float getToughness() {
-        return 2;
+        return 3;
     }
     @Override
     public float getKnockbackResistance() {

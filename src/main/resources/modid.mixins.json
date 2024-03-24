@@ -3,6 +3,7 @@
 	"package": "net.journeyreforged.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
+		"item.gear.armor.ArmorNerfMixin",
 		"item.gear.dagger.DaggerTableMixin",
 		"item.gear.dagger.DaggerEnchantMixin",
 		"item.gear.dagger.DaggerAnvilMixin",
