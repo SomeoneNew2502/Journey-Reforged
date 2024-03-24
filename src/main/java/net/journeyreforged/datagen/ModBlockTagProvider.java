@@ -45,8 +45,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS)
                 .add(BlockRegistry.PRISMARINE_ALLOY_BLOCK);
+        
+        getOrCreateTagBuilder(BlockTags.DAMPENS_VIBRATIONS)
+                .add(BlockRegistry.WARPED_WEAVE);
 
-        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
-                .add(BlockRegistry.DETHREADED_WARPED_STEM);
+        getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
+                .add(BlockRegistry.WARPED_WEAVE);
+
+        // getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+                // .add(BlockRegistry.DETHREADED_WARPED_STEM);
     }
 }
