@@ -1,3 +1,4 @@
-// 1.20.4	2024-02-15T18:51:50.1744101	Journey Reforged/Tags for minecraft:item
-98f786b4357cc05ab08b38e16208a47af3a6ae62 data\minecraft\tags\items\logs_that_burn.json
+// 1.20.4	2024-03-25T17:16:26.2347861	Journey Reforged/Tags for minecraft:item
 fe24bb69d13172b83a93f0874c3d4621f21139bf data\minecraft\tags\items\beacon_payment_items.json
+98f786b4357cc05ab08b38e16208a47af3a6ae62 data\minecraft\tags\items\logs_that_burn.json
+60f70adc4285257893943e54d8b53aedaad346a0 data\minecraft\tags\items\trim_templates.json
