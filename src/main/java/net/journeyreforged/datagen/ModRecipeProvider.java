@@ -212,7 +212,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier("journeyreforged", "diamond_dagger"));
 
         SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Template is not used in vanilla Smithing recipes, so you can pass an empty ingredient
+                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
                         Ingredient.ofItems(ItemRegistry.getItem("diamond_dagger")), // Base item
                         Ingredient.ofItems(Items.NETHERITE_INGOT), // Addition item
                         RecipeCategory.COMBAT, // Recipe category
@@ -224,7 +224,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier("journeyreforged", "netherite_dagger"));
 
         SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Template is not used in vanilla Smithing recipes, so you can pass an empty ingredient
+                        Ingredient.ofItems(ItemRegistry.getItem("prismarine_upgrade_smithing_template")),
                         Ingredient.ofItems(ItemRegistry.getItem("diamond_dagger")), // Base item
                         Ingredient.ofItems(ItemRegistry.getItem("prismarine_ingot")), // Addition item
                         RecipeCategory.COMBAT, // Recipe category
@@ -236,7 +236,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier("journeyreforged", "prismarine_dagger"));
 
         SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Template is not used in vanilla Smithing recipes, so you can pass an empty ingredient
+                        Ingredient.ofItems(ItemRegistry.getItem("prismarine_upgrade_smithing_template")),
                         Ingredient.ofItems(Items.DIAMOND_SWORD), // Base item
                         Ingredient.ofItems(ItemRegistry.getItem("prismarine_ingot")), // Addition item
                         RecipeCategory.COMBAT, // Recipe category
@@ -248,7 +248,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier("journeyreforged", "prismarine_sword"));
 
         SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Template is not used in vanilla Smithing recipes, so you can pass an empty ingredient
+                        Ingredient.ofItems(ItemRegistry.getItem("prismarine_upgrade_smithing_template")),
                         Ingredient.ofItems(Items.DIAMOND_PICKAXE), // Base item
                         Ingredient.ofItems(ItemRegistry.getItem("prismarine_ingot")), // Addition item
                         RecipeCategory.COMBAT, // Recipe category
@@ -260,7 +260,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier("journeyreforged", "prismarine_pickaxe"));
 
         SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Template is not used in vanilla Smithing recipes, so you can pass an empty ingredient
+                        Ingredient.ofItems(ItemRegistry.getItem("prismarine_upgrade_smithing_template")),
                         Ingredient.ofItems(Items.DIAMOND_AXE), // Base item
                         Ingredient.ofItems(ItemRegistry.getItem("prismarine_ingot")), // Addition item
                         RecipeCategory.COMBAT, // Recipe category
@@ -272,7 +272,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier("journeyreforged", "prismarine_axe"));
 
         SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Template is not used in vanilla Smithing recipes, so you can pass an empty ingredient
+                        Ingredient.ofItems(ItemRegistry.getItem("prismarine_upgrade_smithing_template")),
                         Ingredient.ofItems(Items.DIAMOND_SHOVEL), // Base item
                         Ingredient.ofItems(ItemRegistry.getItem("prismarine_ingot")), // Addition item
                         RecipeCategory.COMBAT, // Recipe category
@@ -284,7 +284,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier("journeyreforged", "prismarine_shovel"));
 
         SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Template is not used in vanilla Smithing recipes, so you can pass an empty ingredient
+                        Ingredient.ofItems(ItemRegistry.getItem("prismarine_upgrade_smithing_template")),
                         Ingredient.ofItems(Items.DIAMOND_HOE), // Base item
                         Ingredient.ofItems(ItemRegistry.getItem("prismarine_ingot")), // Addition item
                         RecipeCategory.COMBAT, // Recipe category
@@ -296,7 +296,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier("journeyreforged", "prismarine_hoe"));
 
         SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Template is not used in vanilla Smithing recipes, so you can pass an empty ingredient
+                        Ingredient.ofItems(ItemRegistry.getItem("prismarine_upgrade_smithing_template")),
                         Ingredient.ofItems(Items.DIAMOND_HELMET), // Base item
                         Ingredient.ofItems(ItemRegistry.getItem("prismarine_ingot")), // Addition item
                         RecipeCategory.COMBAT, // Recipe category
@@ -308,7 +308,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier("journeyreforged", "prismarine_helmet"));
 
         SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Template is not used in vanilla Smithing recipes, so you can pass an empty ingredient
+                        Ingredient.ofItems(ItemRegistry.getItem("prismarine_upgrade_smithing_template")),
                         Ingredient.ofItems(Items.DIAMOND_CHESTPLATE), // Base item
                         Ingredient.ofItems(ItemRegistry.getItem("prismarine_ingot")), // Addition item
                         RecipeCategory.COMBAT, // Recipe category
@@ -320,7 +320,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier("journeyreforged", "prismarine_chestplate"));
 
         SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Template is not used in vanilla Smithing recipes, so you can pass an empty ingredient
+                        Ingredient.ofItems(ItemRegistry.getItem("prismarine_upgrade_smithing_template")),
                         Ingredient.ofItems(Items.DIAMOND_LEGGINGS), // Base item
                         Ingredient.ofItems(ItemRegistry.getItem("prismarine_ingot")), // Addition item
                         RecipeCategory.COMBAT, // Recipe category
@@ -332,7 +332,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier("journeyreforged", "prismarine_leggings"));
 
         SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Template is not used in vanilla Smithing recipes, so you can pass an empty ingredient
+                        Ingredient.ofItems(ItemRegistry.getItem("prismarine_upgrade_smithing_template")),
                         Ingredient.ofItems(Items.DIAMOND_BOOTS), // Base item
                         Ingredient.ofItems(ItemRegistry.getItem("prismarine_ingot")), // Addition item
                         RecipeCategory.COMBAT, // Recipe category

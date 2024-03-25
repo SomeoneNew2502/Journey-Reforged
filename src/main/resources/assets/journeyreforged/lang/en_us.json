@@ -24,7 +24,8 @@
     "item.journeyreforged.pearl": "Pearl",
     "item.journeyreforged.elder_guardian_scale": "Elder Guardian Scale",
     "item.journeyreforged.warped_thread": "Warped Thread",
-    
+    "item.journeyreforged.prismarine_upgrade_smithing_template": "Smithing Template",
+
     "block.journeyreforged.pearl_block": "Pearl Block",
     "block.journeyreforged.prismarine_alloy_block": "Block of Prismarine Alloy",
     "block.journeyreforged.dethreaded_warped_stem": "Dethreaded Warped Stem",
@@ -32,6 +33,14 @@
     "enchantment.journeyreforged.repossession": "Repossession",
 
     "tooltip.prismarine_armor.speed": "+4% Speed",
+
+    "item.journeyreforged.prismarine_upgrade_smithing_template.title": "Prismarine Upgrade",
+    "item.journeyreforged.prismarine_upgrade_smithing_template.applies_to_1": "Applies to:",
+    "item.journeyreforged.prismarine_upgrade_smithing_template.applies_to_2": " Diamond Equipment",
+    "item.journeyreforged.prismarine_upgrade_smithing_template.ingredients_1": "Ingredients:",
+    "item.journeyreforged.prismarine_upgrade_smithing_template.ingredients_2": " Prismarine Ingot",
+    "item.journeyreforged.prismarine_upgrade_smithing_template.base_slot_description": "Add diamond armor, weapon, or tool",
+    "item.journeyreforged.prismarine_upgrade_smithing_template.additions_slot_description": "Add Prismarine Ingot",
 
     "itemGroup.journey_reforged": "Journey Reforged"
 }

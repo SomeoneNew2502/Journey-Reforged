@@ -10,6 +10,6 @@
     "item": "journeyreforged:prismarine_sword"
   },
   "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
+    "item": "journeyreforged:prismarine_upgrade_smithing_template"
   }
 }

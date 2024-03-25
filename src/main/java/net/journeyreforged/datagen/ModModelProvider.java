@@ -48,6 +48,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemRegistry.getItem("pearl"), Models.GENERATED);
         itemModelGenerator.register(ItemRegistry.getItem("warped_thread"), Models.GENERATED);
         itemModelGenerator.register(ItemRegistry.getItem("elder_guardian_scale"), Models.GENERATED);
+        itemModelGenerator.register(ItemRegistry.getItem("prismarine_upgrade_smithing_template"), Models.GENERATED);
 
 
     }

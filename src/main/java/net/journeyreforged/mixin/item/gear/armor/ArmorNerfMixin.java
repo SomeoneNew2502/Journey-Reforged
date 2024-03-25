@@ -35,7 +35,8 @@ public abstract class ArmorNerfMixin {
             case "iron":
                 newValue = switch (type) {
                     case HELMET, BOOTS -> 2;
-                    case CHESTPLATE, LEGGINGS -> 3;
+                    case CHESTPLATE -> 4;
+                    case LEGGINGS -> 3;
                 };
                 break;
 

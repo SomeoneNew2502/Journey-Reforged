@@ -22,6 +22,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS)
                 .add(ItemRegistry.getItem("prismarine_ingot"));
 
+        getOrCreateTagBuilder(ItemTags.TRIM_TEMPLATES)
+                .add(ItemRegistry.getItem("prismarine_upgrade_smithing_template"));
+
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
                 .add(BlockRegistry.DETHREADED_WARPED_STEM.asItem());
     }
