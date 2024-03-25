@@ -13,6 +13,7 @@
 		"entity.creeper.CreeperIgniteMixin",
 		"entity.villager.DisableMendingTradeMixin",
 		"entity.player.DisableSweepAttackMixin",
+		"entity.player.TotemOnHotbarMixin",
 
 		"experience.GhastExpMixin",
 		"experience.EndermanExpMixin",
