@@ -52,7 +52,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
                 .add(BlockRegistry.WARPED_WEAVE);
 
-        // getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
-                // .add(BlockRegistry.DETHREADED_WARPED_STEM);
+        getOrCreateTagBuilder(BlockTags.WARPED_STEMS)
+                .add(BlockRegistry.DETHREADED_WARPED_STEM);
+
+        getOrCreateTagBuilder(ModTags.Blocks.NETHER_WOOL)
+                .add(BlockRegistry.WARPED_WEAVE);
     }
 }
