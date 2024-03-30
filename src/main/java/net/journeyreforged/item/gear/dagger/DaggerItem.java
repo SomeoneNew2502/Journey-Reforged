@@ -2,13 +2,12 @@ package net.journeyreforged.item.gear.dagger;
 
 import net.journeyreforged.JourneyReforged;
 import net.journeyreforged.registry.EnchantmentRegistry;
+import net.journeyreforged.registry.ItemRegistry;
+import net.journeyreforged.util.CooldownManager;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
@@ -28,25 +27,43 @@ private final DaggerType daggerType;
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
-        world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ITEM_TRIDENT_THROW, user.getSoundCategory(), 0.5F, 1.0F);
-        if (!world.isClient) {
-            ThrowableDaggerEntity daggerEntity = new ThrowableDaggerEntity(EntityRegistry.THROWABLE_DAGGER, world);
-            daggerEntity.setDaggerType(this.daggerType); // Directly set the daggerType based on the DaggerItem's type
-            NbtCompound nbt = new NbtCompound();
-            nbt.putString("DaggerType", this.daggerType.toString()); // 'this.type' refers to the DaggerItem's material type
-            daggerEntity.readNbt(nbt);
+        int slotIndex = hand == Hand.MAIN_HAND ? user.getInventory().selectedSlot : -1; // -1 for offhand
 
+        // Dynamically get the item based on the daggerType
+        Item daggerItem = ItemRegistry.getItem(this.daggerType.getModelKey());
+        //System.out.println(user.getItemCooldownManager().isCoolingDown(daggerItem));
 
-            daggerEntity.initialize(user); // 'user' is the LivingEntity that is using/spawning the dagger
-            daggerEntity.setItem(itemStack.copy()); // Ensure the thrown dagger retains enchantments
-            daggerEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
-            world.spawnEntity(daggerEntity);
-            if (!user.getAbilities().creativeMode) {
-                itemStack.decrement(1);
+        if (!user.getItemCooldownManager().isCoolingDown(daggerItem)) {
+            world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ITEM_TRIDENT_THROW, user.getSoundCategory(), 0.5F, 1.0F);
+            if (!world.isClient) {
+                ThrowableDaggerEntity daggerEntity = new ThrowableDaggerEntity(EntityRegistry.THROWABLE_DAGGER, world);
+                daggerEntity.setDaggerType(this.daggerType); // Set the daggerType based on the DaggerItem's type
+                NbtCompound nbt = new NbtCompound();
+                daggerEntity.readNbt(nbt); // You may not need to manually set "DaggerType" here since it's set by setDaggerType()
+
+                daggerEntity.initialize(user); // Initialize the entity
+                daggerEntity.setItem(itemStack.copy()); // Copy the item stack to retain enchantments
+                daggerEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
+                world.spawnEntity(daggerEntity);
+                if (!user.getAbilities().creativeMode) {
+                    itemStack.decrement(1);
+                }
             }
+            // Apply the cooldown dynamically based on the dagger's type
+            user.getItemCooldownManager().set(daggerItem, 20); // 20 ticks cooldown
+
+            // After throwing, lock the slot for this specific itemStack
+            if (!world.isClient && slotIndex != -1) {
+                CooldownManager.lockSlot(user, slotIndex, itemStack.copy());
+            }
+
+            return TypedActionResult.success(itemStack, world.isClient());
         }
-        return TypedActionResult.success(itemStack, world.isClient());
+
+
+        return TypedActionResult.fail(itemStack);
     }
+
 
 
     @Override

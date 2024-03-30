@@ -14,6 +14,7 @@
 		"entity.villager.DisableMendingTradeMixin",
 		"entity.player.DisableSweepAttackMixin",
 		"entity.player.TotemOnHotbarMixin",
+		"entity.player.DisableItemPickup",
 
 		"experience.GhastExpMixin",
 		"experience.EndermanExpMixin",

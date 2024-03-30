@@ -30,7 +30,7 @@ public class TotemOnHotbarMixin {
         if (!((Object)this instanceof PlayerEntity)) return;
 
         PlayerEntity player = (PlayerEntity)(Object)this;
-        System.out.println(player.getItemCooldownManager().isCoolingDown(Items.TOTEM_OF_UNDYING));
+        //System.out.println(player.getItemCooldownManager().isCoolingDown(Items.TOTEM_OF_UNDYING));
         if (!player.getItemCooldownManager().isCoolingDown(Items.TOTEM_OF_UNDYING)){
             ItemStack totemStack = ItemStack.EMPTY;
             // Check hotbar slots for a Totem of Undying

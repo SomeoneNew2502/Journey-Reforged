@@ -185,9 +185,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern("   ")
                 .pattern(" C ")
                 .pattern(" S ")
-                .input('C', TagKey.of(Registries.ITEM.getKey(), new Identifier("minecraft:base_stone_overworld")))
+                .input('C', TagKey.of(Registries.ITEM.getKey(), new Identifier("minecraft:stone_tool_materials")))
                 .input('S', Items.STICK)
-                .criterion("has_base_stone_overworld", conditionsFromTag(TagKey.of(Registries.ITEM.getKey(), new Identifier("minecraft:base_stone_overworld"))))
+                .criterion("has_stone_tool_materials", conditionsFromTag(TagKey.of(Registries.ITEM.getKey(), new Identifier("minecraft:stone_tool_materials"))))
                 .criterion(hasItem(ItemRegistry.getItem("stone_dagger")), conditionsFromItem(ItemRegistry.getItem("stone_dagger")))
                 .offerTo(exporter, new Identifier("journeyreforged", "stone_dagger"));
 

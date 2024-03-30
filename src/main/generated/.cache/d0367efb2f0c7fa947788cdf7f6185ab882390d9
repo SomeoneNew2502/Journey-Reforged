@@ -1,4 +1,5 @@
-// 1.20.4	2024-03-25T17:16:26.2347861	Journey Reforged/Block Loot Tables
+// 1.20.4	2024-03-29T19:57:40.5416584	Journey Reforged/Block Loot Tables
 7d10104ca88503c0f64a99abab0c88b247f62a87 data\journeyreforged\loot_tables\blocks\pearl_block.json
 17a56d462eb3c4f8d20eb97fc4b56f15c9f5491a data\journeyreforged\loot_tables\blocks\dethreaded_warped_stem.json
+027f1fd9070ce0fcc2199ed908309aabc1cafd3e data\journeyreforged\loot_tables\blocks\warped_weave.json
 c9213f8ebd69ca0c67e7109d4946d307019ceed8 data\journeyreforged\loot_tables\blocks\prismarine_alloy_block.json
