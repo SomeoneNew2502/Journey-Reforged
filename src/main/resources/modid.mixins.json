@@ -11,7 +11,7 @@
 		"item.gear.BowInfinityMendingMixin",
 
 		"entity.creeper.CreeperIgniteMixin",
-		"entity.villager.DisableMendingTradeMixin",
+		"entity.villager.DisableEnchantedBookTradeMixin",
 		"entity.player.DisableSweepAttackMixin",
 		"entity.player.TotemOnHotbarMixin",
 		"entity.player.DisableItemPickup",

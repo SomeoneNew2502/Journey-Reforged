@@ -1,11 +1,7 @@
 package net.journeyreforged.item.gear.dagger;
 
-import net.journeyreforged.JourneyReforged;
-import net.journeyreforged.registry.EnchantmentRegistry;
 import net.journeyreforged.registry.ItemRegistry;
 import net.journeyreforged.util.CooldownManager;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
@@ -45,10 +41,12 @@ private final DaggerType daggerType;
                 daggerEntity.setItem(itemStack.copy()); // Copy the item stack to retain enchantments
                 daggerEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
                 world.spawnEntity(daggerEntity);
+
                 if (!user.getAbilities().creativeMode) {
                     itemStack.decrement(1);
                 }
             }
+
             // Apply the cooldown dynamically based on the dagger's type
             user.getItemCooldownManager().set(daggerItem, 20); // 20 ticks cooldown
 

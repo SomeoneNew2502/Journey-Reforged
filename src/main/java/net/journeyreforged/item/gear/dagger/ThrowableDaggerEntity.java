@@ -21,10 +21,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ToolMaterial;
-import net.minecraft.item.ToolMaterials;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.server.world.ServerWorld;
@@ -159,6 +156,16 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
         super.onCollision(hitResult);
 
         if (hitResult.getType() == HitResult.Type.ENTITY && !this.isReturning && !hasHitEntity) {
+            // Reduce the durability of the dagger
+            if (!this.originalItemStack.isEmpty()) {
+                this.originalItemStack.damage(1, this.random, null); // Assuming `random` is available. You may need to adjust this.
+
+                // If the item breaks (durability is depleted)
+                if (this.originalItemStack.isEmpty()) {
+                    this.discard();
+                }
+            }
+
             EntityHitResult entityHitResult = (EntityHitResult) hitResult;
             Entity hitEntity = entityHitResult.getEntity();
 
@@ -237,6 +244,7 @@ public class ThrowableDaggerEntity extends ThrownItemEntity {
                 Vec3d bounceDirection = this.getVelocity().multiply(-0.3, 1, -0.3); // Reverse horizontal velocity slightly
                 this.setVelocity(bounceDirection);
             }
+
         } else if (hitResult.getType() == HitResult.Type.BLOCK && !isReturning) {
             // Handle getting stuck in a block
             this.isStuck = true;
