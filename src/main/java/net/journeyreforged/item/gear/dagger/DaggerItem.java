@@ -30,7 +30,7 @@ private final DaggerType daggerType;
         //System.out.println(user.getItemCooldownManager().isCoolingDown(daggerItem));
 
         if (!user.getItemCooldownManager().isCoolingDown(daggerItem)) {
-            world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ITEM_TRIDENT_THROW, user.getSoundCategory(), 0.5F, 1.0F);
+            world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_WITCH_THROW, user.getSoundCategory(), 0.5F, 1.0F);
             if (!world.isClient) {
                 ThrowableDaggerEntity daggerEntity = new ThrowableDaggerEntity(EntityRegistry.THROWABLE_DAGGER, world);
                 daggerEntity.setDaggerType(this.daggerType); // Set the daggerType based on the DaggerItem's type
