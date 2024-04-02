@@ -1,4 +1,4 @@
-// 1.20.4	2024-03-29T19:57:40.5395539	Journey Reforged/Model Definitions
+// 1.20.4	2024-04-02T15:26:45.4876659	Journey Reforged/Model Definitions
 af079dad92fcb16f2f74fa532ba8e8f1f53e0fed assets\journeyreforged\models\block\pearl_block.json
 8e8921fb86774b542a6b405797d4fbf799ff0b8e assets\journeyreforged\models\item\netherite_dagger.json
 fe3f0d38d859757a5f9a9f02674174a5a5425b25 assets\journeyreforged\blockstates\prismarine_alloy_block.json
@@ -9,8 +9,8 @@ f9b2f51cce9a73fdf2d69dc1edbd7fb274ae7c4e assets\journeyreforged\models\item\pris
 585c82959b44dc222550b54fab1ea9febde0ce64 assets\journeyreforged\models\item\prismarine_axe.json
 f9892093580b3f890ea82d9f81859f885d19878f assets\journeyreforged\models\item\diamond_dagger.json
 21cc664fcf217a2202ec814f1044145ad1319bcd assets\journeyreforged\models\block\dethreaded_warped_stem_horizontal.json
-c19813d2c952d3195c297a002c482627b8fa1b85 assets\journeyreforged\models\item\warped_thread.json
 4029b5d2b2998ea9b06e88fb1a1c08fc3b0b4e95 assets\journeyreforged\models\item\prismarine_helmet.json
+c19813d2c952d3195c297a002c482627b8fa1b85 assets\journeyreforged\models\item\warped_thread.json
 60ae876d9465d15fbe49b6eadb5a0337de4d0c5f assets\journeyreforged\blockstates\dethreaded_warped_stem.json
 71a78647b4721fb73f8f5b1a0843eb4370f95bcf assets\journeyreforged\models\item\golden_dagger.json
 9492ea20ed5bf773868de3da84c2c81147773c8d assets\journeyreforged\models\item\prismarine_dagger.json

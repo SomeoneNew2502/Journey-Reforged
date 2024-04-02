@@ -52,6 +52,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(BlockRegistry.PEARL_BLOCK), conditionsFromItem(BlockRegistry.PEARL_BLOCK))
                 .offerTo(exporter, new Identifier("journeyreforged", "pearl_block"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.getItem("prismarine_upgrade_smithing_template"), 2)
+                .pattern("DPD")
+                .pattern("DSD")
+                .pattern("DDD")
+                .input('D', Items.DIAMOND)
+                .input('P', ItemRegistry.getItem("prismarine_upgrade_smithing_template"))
+                .input('S', Blocks.SANDSTONE)
+                .criterion(hasItem(ItemRegistry.getItem("prismarine_upgrade_smithing_template")), conditionsFromItem(ItemRegistry.getItem("prismarine_upgrade_smithing_template")))
+                .offerTo(exporter, new Identifier("journeyreforged", "prismarine_upgrade_smithing_template"));
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.getItem("pearl"), 4)
                 .input(BlockRegistry.PEARL_BLOCK)
                 .criterion(hasItem(ItemRegistry.getItem("pearl")), conditionsFromItem(ItemRegistry.getItem("pearl")))

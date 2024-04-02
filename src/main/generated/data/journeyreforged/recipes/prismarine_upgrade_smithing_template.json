@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "P": {
+      "item": "journeyreforged:prismarine_upgrade_smithing_template"
+    },
+    "S": {
+      "item": "minecraft:sandstone"
+    }
+  },
+  "pattern": [
+    "DPD",
+    "DSD",
+    "DDD"
+  ],
+  "result": {
+    "count": 2,
+    "item": "journeyreforged:prismarine_upgrade_smithing_template"
+  }
+}

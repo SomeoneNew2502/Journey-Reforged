@@ -1,11 +1,13 @@
 {
 	"schemaVersion": 1,
 	"id": "journeyreforged",
-	"version": "1.0",
+	"version": "1.0.1",
 	"name": "Journey Reforged",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me... and He!"
+		"SomeoneNew2502",
+		"VentedSun",
+		"Libraries"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
