@@ -374,6 +374,22 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input(ItemRegistry.getItem("dethreaded_warped_stem"))
                 .criterion(hasItem(ItemRegistry.getItem("dethreaded_warped_stem")), conditionsFromItem(ItemRegistry.getItem("dethreaded_warped_stem")))
                 .offerTo(exporter, new Identifier("journeyreforged", "warped_planks"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.WARPED_PLANKS, 4)
+                .input(ItemRegistry.getItem("dethreaded_warped_hyphae"))
+                .criterion(hasItem(ItemRegistry.getItem("dethreaded_warped_hyphae")), conditionsFromItem(ItemRegistry.getItem("dethreaded_warped_hyphae")))
+                .offerTo(exporter, new Identifier("journeyreforged", "warped_planks"));
+
+        // One-way recipe for crafting dethreaded warped hyphae
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, BlockRegistry.DETHREADED_WARPED_HYPHAE, 3)
+                .pattern("WW ")
+                .pattern("WW ")
+                .pattern("   ")
+                .input('W', ItemRegistry.getItem("dethreaded_warped_stem"))
+                .criterion(hasItem(ItemRegistry.getItem("dethreaded_warped_stem")), conditionsFromItem(ItemRegistry.getItem("dethreaded_warped_stem")))
+                .criterion(hasItem(BlockRegistry.DETHREADED_WARPED_HYPHAE), conditionsFromItem(BlockRegistry.DETHREADED_WARPED_HYPHAE))
+                .offerTo(exporter, new Identifier("journeyreforged", "dethreaded_warped_stem"));
+
     }
 
     public static void offerPlanksRecipe(RecipeExporter exporter, ItemConvertible output, TagKey<Item> input, int count) {

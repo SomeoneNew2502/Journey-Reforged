@@ -63,7 +63,7 @@ public class WarpedStemShearMixin {
                 // Prevent further processing and return success
                 cir.setReturnValue(ActionResult.SUCCESS);
             }
-            // Check if the player is holding shears and the block is a warped stem
+            // Check if the player is holding shears and the block is a warped hyphae
             if (itemStack.getItem() instanceof ShearsItem && blockState.isOf(Blocks.WARPED_HYPHAE)) {
                 // Logic to replace the warped stem with dethreaded warped stem
                 world.setBlockState(hitResult.getBlockPos(), BlockRegistry.DETHREADED_WARPED_HYPHAE.getDefaultState().with(Properties.AXIS, blockState.get(Properties.AXIS)), 3);

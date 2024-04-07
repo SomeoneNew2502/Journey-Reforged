@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "journeyreforged:dethreaded_warped_stem"
+    "journeyreforged:dethreaded_warped_stem",
+    "journeyreforged:dethreaded_warped_hyphae"
   ]
 }
