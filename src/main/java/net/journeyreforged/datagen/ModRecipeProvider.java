@@ -58,6 +58,23 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(BlockRegistry.PEARL_BLOCK), conditionsFromItem(BlockRegistry.PEARL_BLOCK))
                 .offerTo(exporter, new Identifier("journeyreforged", "pearl"));
 
+        // For turning Dethreaded Warped Stem into Dethreaded Warped Hyphae
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, BlockRegistry.DETHREADED_WARPED_HYPHAE, 3)
+                .pattern("WW ")
+                .pattern("WW ")
+                .pattern("   ")
+                .input('W', ItemRegistry.getItem("dethreaded_warped_stem"))
+                .criterion(hasItem(ItemRegistry.getItem("pearl")), conditionsFromItem(ItemRegistry.getItem("pearl")))
+                .criterion(hasItem(BlockRegistry.DETHREADED_WARPED_HYPHAE), conditionsFromItem(BlockRegistry.DETHREADED_WARPED_HYPHAE))
+                .offerTo(exporter, new Identifier("journeyreforged", "dethreaded_warped_hyphae"));
+
+        // For crafting planks out of Dethreaded Warped Hyphae
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ItemRegistry.getItem("warped_planks"), 4)
+                .input(BlockRegistry.DETHREADED_WARPED_HYPHAE)
+                .criterion(hasItem(ItemRegistry.getItem("warped_planks")), conditionsFromItem(ItemRegistry.getItem("warped_planks")))
+                .criterion(hasItem(BlockRegistry.DETHREADED_WARPED_HYPHAE), conditionsFromItem(BlockRegistry.DETHREADED_WARPED_HYPHAE))
+                .offerTo(exporter, new Identifier("journeyreforged", "warped_planks"));
+
         // For compacting prismarine ingot to prismarine alloy block
         offerReversibleCompactingRecipes(
                 exporter,

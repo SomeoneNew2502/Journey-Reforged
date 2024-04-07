@@ -11,6 +11,9 @@ public class ModTags {
     public static class Blocks {
         public static final TagKey<Block> SHEARABLE_WARPED_STEM =
                 createTag("shearable_warped_stem");
+        public static final TagKey<Block> NETHER_WOOL =
+                createTag("nether_wool");
+
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(JourneyReforged.MODID, name));
         }

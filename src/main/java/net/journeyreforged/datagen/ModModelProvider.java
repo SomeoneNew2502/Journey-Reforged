@@ -18,6 +18,8 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(BlockRegistry.PEARL_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(BlockRegistry.PRISMARINE_ALLOY_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(BlockRegistry.WARPED_WEAVE);
+        blockStateModelGenerator.registerSimpleCubeAll(BlockRegistry.DETHREADED_WARPED_HYPHAE);
         blockStateModelGenerator.registerLog(BlockRegistry.DETHREADED_WARPED_STEM).log(BlockRegistry.DETHREADED_WARPED_STEM);
     }
 

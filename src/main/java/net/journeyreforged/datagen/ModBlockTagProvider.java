@@ -19,7 +19,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(ModTags.Blocks.SHEARABLE_WARPED_STEM)
-                .add(BlockRegistry.DETHREADED_WARPED_STEM);
+                .add(BlockRegistry.DETHREADED_WARPED_STEM)
+                .add(BlockRegistry.DETHREADED_WARPED_HYPHAE);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(Blocks.OAK_LEAVES)
@@ -52,7 +53,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
                 .add(BlockRegistry.WARPED_WEAVE);
 
-        // getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
-                // .add(BlockRegistry.DETHREADED_WARPED_STEM);
+        getOrCreateTagBuilder(BlockTags.WARPED_STEMS)
+                .add(BlockRegistry.DETHREADED_WARPED_STEM)
+                .add(BlockRegistry.DETHREADED_WARPED_HYPHAE);
+
+        getOrCreateTagBuilder(ModTags.Blocks.NETHER_WOOL)
+                .add(BlockRegistry.WARPED_WEAVE);
     }
 }

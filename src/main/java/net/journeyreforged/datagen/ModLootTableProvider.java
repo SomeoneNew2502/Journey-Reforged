@@ -14,6 +14,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(BlockRegistry.PEARL_BLOCK);
         addDrop(BlockRegistry.PRISMARINE_ALLOY_BLOCK);
         addDrop(BlockRegistry.DETHREADED_WARPED_STEM);
+        addDrop(BlockRegistry.DETHREADED_WARPED_HYPHAE);
         addDrop(BlockRegistry.WARPED_WEAVE);
     }
 }

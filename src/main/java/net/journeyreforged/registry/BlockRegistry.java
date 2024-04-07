@@ -27,6 +27,8 @@ public class BlockRegistry {
 
     public static final Block DETHREADED_WARPED_STEM = register("dethreaded_warped_stem", new PillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_STEM)));
 
+    public static final Block DETHREADED_WARPED_HYPHAE = register("dethreaded_warped_hyphae", new Block(FabricBlockSettings.copyOf(Blocks.WARPED_HYPHAE)));
+
     public static final Block WARPED_WEAVE = register("warped_weave", new WarpedWeaveBlock(FabricBlockSettings.create()
             .hardness(0.8f)
             .resistance(0.8f)
