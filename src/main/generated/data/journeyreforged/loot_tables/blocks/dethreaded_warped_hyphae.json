@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "journeyreforged:dethreaded_warped_hyphae"
         }
       ],
       "rolls": 1.0

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "journeyreforged:block/dethreaded_warped_stem"
+      "model": "journeyreforged:block/dethreaded_warped_hyphae"
     }
   }
 }

@@ -33,6 +33,7 @@ public class ItemRegistry {
         register("dethreaded_warped_stem", new BlockItem(BlockRegistry.DETHREADED_WARPED_STEM, new Item.Settings()));
         register("dethreaded_warped_hyphae", new BlockItem(BlockRegistry.DETHREADED_WARPED_HYPHAE, new Item.Settings()));
         register("warped_weave", new BlockItem(BlockRegistry.WARPED_WEAVE, new Item.Settings()));
+        register("warped_carpet", new BlockItem(BlockRegistry.WARPED_CARPET, new Item.Settings()));
 
         register("wooden_dagger", new DaggerItem(DaggerType.WOOD, new Item.Settings()));
         register("stone_dagger", new DaggerItem(DaggerType.STONE, new Item.Settings()));

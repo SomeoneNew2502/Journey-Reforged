@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.journeyreforged.registry.BlockRegistry;
 import net.journeyreforged.registry.ItemRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
@@ -18,8 +19,9 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(BlockRegistry.PEARL_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(BlockRegistry.PRISMARINE_ALLOY_BLOCK);
-        blockStateModelGenerator.registerSimpleCubeAll(BlockRegistry.WARPED_WEAVE);
         blockStateModelGenerator.registerLog(BlockRegistry.DETHREADED_WARPED_STEM).log(BlockRegistry.DETHREADED_WARPED_STEM);
+        blockStateModelGenerator.registerSimpleCubeAll(BlockRegistry.DETHREADED_WARPED_HYPHAE);
+        blockStateModelGenerator.registerWoolAndCarpet(BlockRegistry.WARPED_WEAVE, BlockRegistry.WARPED_CARPET);
     }
 
     @Override

@@ -59,5 +59,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(ModTags.Blocks.NETHER_WOOL)
                 .add(BlockRegistry.WARPED_WEAVE);
+
+        getOrCreateTagBuilder(BlockTags.WOOL_CARPETS)
+                .add(BlockRegistry.WARPED_CARPET);
     }
 }

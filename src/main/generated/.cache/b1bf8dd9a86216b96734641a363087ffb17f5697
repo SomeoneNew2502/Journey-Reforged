@@ -1,10 +1,12 @@
-// 1.20.4	2024-03-28T12:23:28.0927698	Journey Reforged/Tags for minecraft:block
-98f786b4357cc05ab08b38e16208a47af3a6ae62 data\minecraft\tags\blocks\warped_stems.json
-9a88578943dc86dd4dcdd7f6262ff717cc0f82a6 data\minecraft\tags\blocks\occludes_vibration_signals.json
-f72230556cf2f5ff9ba01d62390a999f85a4284d data\minecraft\tags\blocks\mineable\pickaxe.json
-17e04027e222d23b8385feb26f822a045aebb0d3 data\minecraft\tags\blocks\needs_stone_tool.json
-db71d051e16698c0010aae9e10de27aeb22a1c33 data\minecraft\tags\blocks\mineable\axe.json
-98f786b4357cc05ab08b38e16208a47af3a6ae62 data\journeyreforged\tags\blocks\shearable_warped_stem.json
-c9e2ee2fe4a640d0a0e2df23c3799402b039ff2d data\minecraft\tags\blocks\needs_diamond_tool.json
-c9e2ee2fe4a640d0a0e2df23c3799402b039ff2d data\minecraft\tags\blocks\beacon_base_blocks.json
+// 1.20.4	2024-05-12T19:40:50.8826495	Journey Reforged/Tags for minecraft:block
 9a88578943dc86dd4dcdd7f6262ff717cc0f82a6 data\minecraft\tags\blocks\dampens_vibrations.json
+f72230556cf2f5ff9ba01d62390a999f85a4284d data\minecraft\tags\blocks\mineable\pickaxe.json
+c9e2ee2fe4a640d0a0e2df23c3799402b039ff2d data\minecraft\tags\blocks\needs_diamond_tool.json
+9a88578943dc86dd4dcdd7f6262ff717cc0f82a6 data\journeyreforged\tags\blocks\nether_wool.json
+bee57ad4e54a0539f9737e90b91e14e79f646c5f data\minecraft\tags\blocks\wool_carpets.json
+76490c2b8e4a525ca19a89772bfbfcb3267fdc0a data\journeyreforged\tags\blocks\shearable_warped_stem.json
+76490c2b8e4a525ca19a89772bfbfcb3267fdc0a data\minecraft\tags\blocks\warped_stems.json
+c9e2ee2fe4a640d0a0e2df23c3799402b039ff2d data\minecraft\tags\blocks\beacon_base_blocks.json
+db71d051e16698c0010aae9e10de27aeb22a1c33 data\minecraft\tags\blocks\mineable\axe.json
+17e04027e222d23b8385feb26f822a045aebb0d3 data\minecraft\tags\blocks\needs_stone_tool.json
+9a88578943dc86dd4dcdd7f6262ff717cc0f82a6 data\minecraft\tags\blocks\occludes_vibration_signals.json

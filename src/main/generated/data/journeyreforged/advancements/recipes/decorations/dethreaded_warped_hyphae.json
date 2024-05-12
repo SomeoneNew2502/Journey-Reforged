@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dethreaded_warped_hyphae": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "journeyreforged:dethreaded_warped_hyphae"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_dethreaded_warped_stem": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "journeyreforged:dethreaded_warped_stem"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "journeyreforged:dethreaded_warped_hyphae"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_dethreaded_warped_stem",
+      "has_dethreaded_warped_hyphae"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "journeyreforged:dethreaded_warped_hyphae"
+    ]
+  }
+}

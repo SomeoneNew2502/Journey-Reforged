@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dethreaded_warped_stem": {
+    "has_dethreaded_warped_hyphae": {
       "conditions": {
         "items": [
           {
             "items": [
-              "journeyreforged:dethreaded_warped_stem"
+              "journeyreforged:dethreaded_warped_hyphae"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "journeyreforged:warped_planks"
+        "recipe": "journeyreforged:warped_planks_from_hyphae"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -23,12 +23,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_dethreaded_warped_stem"
+      "has_dethreaded_warped_hyphae"
     ]
   ],
   "rewards": {
     "recipes": [
-      "journeyreforged:warped_planks"
+      "journeyreforged:warped_planks_from_hyphae"
     ]
   }
 }
