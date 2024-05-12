@@ -5,6 +5,7 @@ import net.journeyreforged.JourneyReforged;
 import net.journeyreforged.block.WarpedWeaveBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.CarpetBlock;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -27,9 +28,16 @@ public class BlockRegistry {
 
     public static final Block DETHREADED_WARPED_STEM = register("dethreaded_warped_stem", new PillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_STEM)));
 
+    public static final Block DETHREADED_WARPED_HYPHAE = register("dethreaded_warped_hyphae", new Block(FabricBlockSettings.copyOf(Blocks.WARPED_HYPHAE)));
+
     public static final Block WARPED_WEAVE = register("warped_weave", new WarpedWeaveBlock(FabricBlockSettings.create()
             .hardness(0.8f)
             .resistance(0.8f)
+            .sounds(BlockSoundGroup.WOOL)));
+
+    public static final Block WARPED_CARPET = register("warped_carpet", new CarpetBlock(FabricBlockSettings.create()
+            .hardness(0.1f)
+            .resistance(0.1f)
             .sounds(BlockSoundGroup.WOOL)));
 
     private static Block register(String identifier, Block block) {

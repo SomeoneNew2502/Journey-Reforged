@@ -20,7 +20,7 @@ public class JourneyReforged implements ModInitializer {
 	public static final LootFunctionType ENCHANT_WITH_LEVEL_RANGE_LOOT_FUNCTION = new LootFunctionType(EnchantWithLevelRangeSerializer.CODEC);
 
 	public static final ItemGroup JOURNEY_REFORGED_ITEM_GROUP = FabricItemGroup.builder()
-			.icon(() -> new ItemStack(ItemRegistry.getItem("prismarine_pickaxe")))
+			.icon(() -> new ItemStack(ItemRegistry.getItem("prismarine_dagger")))
 			.displayName(Text.translatable("itemGroup.journey_reforged"))
 			.entries((context, entries) -> {
 				// Iterate over the registered items list and add them to the entries
@@ -42,7 +42,8 @@ public class JourneyReforged implements ModInitializer {
 		Registry.register(Registries.ITEM_GROUP, new Identifier("journeyreforged", "journey_reforged"), JOURNEY_REFORGED_ITEM_GROUP);
 
 		StrippableBlockRegistry.register(BlockRegistry.DETHREADED_WARPED_STEM, Blocks.STRIPPED_WARPED_STEM);
+		// StrippableBlockRegistry.register(BlockRegistry.DETHREADED_WARPED_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE);
 
-		FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.DETHREADED_WARPED_STEM, 5, 5);
+		// FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.DETHREADED_WARPED_STEM, 5, 5);
 	}
 }

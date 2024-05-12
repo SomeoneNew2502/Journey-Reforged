@@ -1,0 +1,6 @@
+{
+    "parent": "block/carpet",
+    "textures": {
+        "all": "journeyreforged:block/warped_carpet"
+    }
+}

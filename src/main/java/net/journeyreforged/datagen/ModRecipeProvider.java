@@ -20,6 +20,7 @@ import java.util.List;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
     private static final List<ItemConvertible> GLASS_SMELTABLES = List.of(Blocks.RED_SAND);
+
     public ModRecipeProvider(FabricDataOutput output) {
         super(output);
     }
@@ -57,6 +58,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ItemRegistry.getItem("pearl")), conditionsFromItem(ItemRegistry.getItem("pearl")))
                 .criterion(hasItem(BlockRegistry.PEARL_BLOCK), conditionsFromItem(BlockRegistry.PEARL_BLOCK))
                 .offerTo(exporter, new Identifier("journeyreforged", "pearl"));
+
+        // For turning Dethreaded Warped Stem into Dethreaded Warped Hyphae
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, BlockRegistry.DETHREADED_WARPED_HYPHAE, 3)
+                .pattern("WW ")
+                .pattern("WW ")
+                .pattern("   ")
+                .input('W', ItemRegistry.getItem("dethreaded_warped_stem"))
+                .criterion(hasItem(BlockRegistry.DETHREADED_WARPED_STEM), conditionsFromItem(BlockRegistry.DETHREADED_WARPED_STEM))
+                .criterion(hasItem(BlockRegistry.DETHREADED_WARPED_HYPHAE), conditionsFromItem(BlockRegistry.DETHREADED_WARPED_HYPHAE))
+                .offerTo(exporter, new Identifier("journeyreforged", "dethreaded_warped_hyphae"));
 
         // For compacting prismarine ingot to prismarine alloy block
         offerReversibleCompactingRecipes(
@@ -166,8 +177,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern(" S ")
                 .input('P', ItemRegistry.getItem("pearl"))
                 .input('S', ItemRegistry.getItem("warped_thread"))
-                 .criterion(hasItem(ItemRegistry.getItem("pearl")), conditionsFromItem(ItemRegistry.getItem("pearl")))
-                 .criterion(hasItem(ItemRegistry.getItem("warped_thread")), conditionsFromItem(ItemRegistry.getItem("warped_thread")))
+                .criterion(hasItem(ItemRegistry.getItem("pearl")), conditionsFromItem(ItemRegistry.getItem("pearl")))
+                .criterion(hasItem(ItemRegistry.getItem("warped_thread")), conditionsFromItem(ItemRegistry.getItem("warped_thread")))
                 .criterion(hasItem(Items.ENDER_PEARL), conditionsFromItem(Items.ENDER_PEARL))
                 .offerTo(exporter, new Identifier("journeyreforged", "ender_pearl"));
 
@@ -353,12 +364,27 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 // Provide a unique recipe ID
                 .offerTo(exporter, new Identifier("journeyreforged", "prismarine_boots"));
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.WARPED_PLANKS, 4)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.WARPED_PLANKS, 4)
                 .input(ItemRegistry.getItem("dethreaded_warped_stem"))
                 .criterion(hasItem(ItemRegistry.getItem("dethreaded_warped_stem")), conditionsFromItem(ItemRegistry.getItem("dethreaded_warped_stem")))
-                .offerTo(exporter, new Identifier("journeyreforged", "warped_planks"));
-    }
+                .offerTo(exporter, new Identifier("journeyreforged", "warped_planks_from_stem"));
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.WARPED_PLANKS, 4)
+                .input(ItemRegistry.getItem("dethreaded_warped_hyphae"))
+                .criterion(hasItem(ItemRegistry.getItem("dethreaded_warped_hyphae")), conditionsFromItem(ItemRegistry.getItem("dethreaded_warped_hyphae")))
+                .offerTo(exporter, new Identifier("journeyreforged", "warped_planks_from_hyphae"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, BlockRegistry.WARPED_CARPET, 3)
+                .pattern("WW ")
+                .pattern("   ")
+                .pattern("   ")
+                .input('W', ItemRegistry.getItem("warped_weave"))
+                .criterion(hasItem(ItemRegistry.getItem("warped_thread")), conditionsFromItem(ItemRegistry.getItem("warped_thread")))
+                .criterion(hasItem(BlockRegistry.WARPED_WEAVE), conditionsFromItem(BlockRegistry.WARPED_WEAVE))
+                .criterion(hasItem(BlockRegistry.WARPED_CARPET), conditionsFromItem(BlockRegistry.WARPED_CARPET))
+                .offerTo(exporter, new Identifier("journeyreforged", "warped_carpet"));
+
+    }
     public static void offerPlanksRecipe(RecipeExporter exporter, ItemConvertible output, TagKey<Item> input, int count) {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, count).input(input).group("planks").criterion("has_logs", (AdvancementCriterion) RecipeProvider.conditionsFromTag(input)).offerTo(exporter);
     }

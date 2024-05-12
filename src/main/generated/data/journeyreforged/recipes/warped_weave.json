@@ -2,14 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
+    "T": {
       "item": "journeyreforged:warped_thread"
     }
   },
   "pattern": [
-    "###",
-    "###",
-    "###"
+    "TTT",
+    "TTT",
+    "TTT"
   ],
   "result": {
     "item": "journeyreforged:warped_weave"
